@@ -1,0 +1,2 @@
+ErrorDocument 404 /gkk/error404.html
+ErrorDocument 403 /gkk/error404.html
