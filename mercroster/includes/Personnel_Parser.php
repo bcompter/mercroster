@@ -48,6 +48,7 @@ class Personnelparser extends Parser
                 $rank=$this->strip($_POST['rank']);
                 $lname=$this->strip($_POST['lname']);
                 $fname=$this->strip($_POST['fname']);
+    			$callsign=$this->strip($_POST['callsign']);
                 $status=$this->strip($_POST['status']);
                 $crewnumber=$this->strip($_POST['crewnumber']);
                 $joiningdate=$this->strip($_POST['year'])."-".$this->strip($_POST['month'])."-".$this->strip($_POST['day']);
@@ -80,7 +81,7 @@ class Personnelparser extends Parser
                 if($errMSG=="")
                 {
                   //Personel UPDATE Query
-                  $queryArray[sizeof($queryArray)] = "UPDATE crew SET rank='{$rank}', lname='{$lname}', fname='{$fname}', status='{$status}', crewnumber='{$crewnumber}', joiningdate='{$joiningdate}', notes='{$notes}', bday='{$birthdate}', notable='{$notable}', image='{$image}' WHERE id='{$id}';";
+                  $queryArray[sizeof($queryArray)] = "UPDATE crew SET rank='{$rank}', lname='{$lname}', fname='{$fname}', callsign='{$callsign}', status='{$status}', crewnumber='{$crewnumber}', joiningdate='{$joiningdate}', notes='{$notes}', bday='{$birthdate}', notable='{$notable}', image='{$image}' WHERE id='{$id}';";
                   if($vehicleid!=$lastvehicleid)
                   {
                     //Set old equipment's Owner to 0
@@ -102,6 +103,7 @@ class Personnelparser extends Parser
               $rank=$this->strip($_POST['rank']);
               $lname=$this->strip($_POST['lname']);
               $fname=$this->strip($_POST['fname']);
+              $callsign=$this->strip($_POST['callsign']);
               $status=$this->strip($_POST['status']);
               $crewnumber=$this->strip($_POST['crewnumber']);
               $joiningdate=$this->strip($_POST['year'])."-".$this->strip($_POST['month'])."-".$this->strip($_POST['day']);
@@ -131,7 +133,7 @@ class Personnelparser extends Parser
 
               if($errMSG=="")
               {
-                $queryArray[sizeof($queryArray)] = "INSERT INTO crew (rank, lname, fname, status, crewnumber, joiningdate, notes, bday, notable, image) VALUES ('{$rank}', '{$lname}', '{$fname}', '{$status}', '{$crewnumber}', '{$joiningdate}', '{$notes}', '{$birthdate}', '{$notable}', '{$image}');";
+                $queryArray[sizeof($queryArray)] = "INSERT INTO crew (rank, lname, fname, callsign, status, crewnumber, joiningdate, notes, bday, notable, image) VALUES ('{$rank}', '{$lname}', '{$fname}', '{$status}', '{$crewnumber}', '{$joiningdate}', '{$notes}', '{$birthdate}', '{$notable}', '{$image}');";
                 $dbf->queryarray($queryArray);
                 $parseheader="location:index.php?action=personneltable&first=0";
               }

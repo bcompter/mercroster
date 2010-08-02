@@ -6,7 +6,7 @@ class Parser
    * @param <string> $data
    * @return <string>
    */
-  private function strip($data)
+  public function strip($data)
   {
     require("htdocs/dbsetup.php");
     $data=stripslashes($data);

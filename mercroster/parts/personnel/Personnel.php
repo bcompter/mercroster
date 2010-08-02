@@ -39,7 +39,7 @@ function age($BDay, $CDay)
 }
 
 //Need to determine what type of roster to fecth from database
-$personnelResult = $dbf->queryselect("SELECT c.id, r.rankname, c.lname, c.fname, c.joiningdate, c.notes, v.subtype, v.name as equipmentname, u.name as unitname, c.bday, c.status, u.id as unitid, v.id as equipmentid, c.image, c.crewnumber FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN unit u ON c.parent=u.id WHERE c.id='$personnelID';");
+$personnelResult = $dbf->queryselect("SELECT c.id, r.rankname, c.lname, c.fname, c.callsign, c.joiningdate, c.notes, v.subtype, v.name as equipmentname, u.name as unitname, c.bday, c.status, u.id as unitid, v.id as equipmentid, c.image, c.crewnumber FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN unit u ON c.parent=u.id WHERE c.id='$personnelID';");
 if(mysql_num_rows($personnelResult)==1)
 {
   //Fetching used dates data
@@ -98,6 +98,11 @@ if(mysql_num_rows($personnelResult)==1)
   echo "<td class='generictablecell15'><b>Rank:</b></td>\n";
   echo "<td class='generictablecell85' colspan='2'>{$personnelArray[rankname]}</td>\n";
   echo "</tr>\n";
+  //Call Sign
+  echo "<tr>\n";
+  echo "<td class='generictablecell15'><b>Callsign:</b></td>\n";
+  echo "<td class='generictablecell85' colspan='2'>{$personnelArray[callsign]}</td>\n";
+  echo "</tr>\n";
   //Age
   $BDay=$personnelArray[bday];
   $CDay=$datesArray[2];
@@ -125,7 +130,7 @@ if(mysql_num_rows($personnelResult)==1)
   echo "<td class='generictablecell15'><b>Equipment:</b></td>\n";
   if($action!="notable")
   {
-    echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$personnelArray[equipmentid]}'>{$personnelArray[subtype]} {$personnelArray[equipmentname]}</a></td>\n";
+   	echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$personnelArray[equipmentid]}'>{$personnelArray[subtype]} {$personnelArray[equipmentname]}</a></td>\n";
   }
   else
   {

@@ -21,7 +21,7 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
 {
   if(isset($_GET['personnel']))
   {
-    $result=$dbf->queryselect("SELECT id, rank, lname, fname, crewnumber, joiningdate, notes, bday, status, parent, notable, image FROM crew WHERE id='$crewID';");
+    $result=$dbf->queryselect("SELECT id, rank, lname, fname, callsign, crewnumber, joiningdate, notes, bday, status, parent, notable, image FROM crew WHERE id='$crewID';");
     if(mysql_num_rows($result)==1)
     {
       $array=mysql_fetch_array($result, MYSQL_ASSOC);
@@ -190,6 +190,13 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
     echo "<td class='edittableleft'>First name:</td>\n";
     echo "<td class='edittableright' colspan='6'>";
     $inputFields->textinput("edittablecommon265","fname",45,$array[fname]);
+    echo "</td>\n";
+    echo "</tr>\n";
+    //Call Sign
+    echo "<tr>\n";
+    echo "<td class='edittableleft'>Callsign:</td>\n";
+    echo "<td class='edittableright' colspan='6'>";
+    $inputFields->textinput("edittablecommon265","callsign",45,$array[callsign]);
     echo "</td>\n";
     echo "</tr>\n";
     //Birth Day

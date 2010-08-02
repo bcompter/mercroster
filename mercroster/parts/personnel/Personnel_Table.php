@@ -74,6 +74,20 @@ if(isset($_GET["type"]))
       $gstatus="(c.status='Active' OR c.status='Hospitalized' OR c.status='On Leave')";
       break;
   }
+  
+  //Check to see if any callsigns are being used
+  $callUsed = 0;
+  $personelQeury="SELECT callsign FROM crew c LEFT JOIN personnelpositions p ON c.id=p.person WHERE personneltype='{$personnelType}'";
+  //$personelQeury.=$gstatus;
+  $personnelResult=$dbf->queryselect($personelQeury);
+  while($array = mysql_fetch_array($personnelResult, MYSQL_BOTH))
+  {
+ 	if(!is_null($array[callsign]) || $array[callsign]!="") {
+ 		$callUsed = 1;
+ 		break;
+ 	}
+  }
+  
   //Personnel without type
   if($personnelType==0)
   {
@@ -88,6 +102,9 @@ if(isset($_GET["type"]))
     }
     $ordertable[0]="c.rank DESC";
     $ordertable[sizeof($ordertable)]="c.fname ASC";
+    if($callUsed) {
+    	$ordertable[sizeof($ordertable)]="c.callsign ASC";
+    }
     $ordertable[sizeof($ordertable)]="c.bday ASC";
     $ordertable[sizeof($ordertable)]="v.subtype ASC";
     $ordertable[sizeof($ordertable)]="u.name ASC";
@@ -102,7 +119,7 @@ if(isset($_GET["type"]))
       }
     }
 
-    $personelQeury="SELECT c.id, r.rankname, r.number AS ranknumber, c.lname, c.fname, v.subtype, v.name AS vname, u.name AS uname, c.bday, c.status, c.notes FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN unit u ON c.parent=u.id LEFT JOIN personnelpositions p ON c.id=p.person WHERE p.personneltype IS NULL AND ";
+    $personelQeury="SELECT c.id, r.rankname, r.number AS ranknumber, c.lname, c.fname, c.callsign, v.subtype, v.name AS vname, u.name AS uname, c.bday, c.status, c.notes FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN unit u ON c.parent=u.id LEFT JOIN personnelpositions p ON c.id=p.person WHERE p.personneltype IS NULL AND ";
     $personelQeury.=$gstatus;
     $personelQeury.=" ORDER BY ".$order;
     $crewnumberque="SELECT COUNT(*) count FROM crew c LEFT JOIN personnelpositions p ON c.id=p.person WHERE p.personneltype IS NULL AND ";
@@ -128,11 +145,11 @@ if(isset($_GET["type"]))
       $skillsUsedArray=$dbf->resulttoarray($skillsUsedResult);
       if($checkArray[5])
       {
-        $skillque="SELECT c.id, r.rankname, r.number AS ranknumber, c.lname, c.fname, v.subtype, v.name AS vname, u.name AS uname, c.bday, c.status, c.notes";
+        $skillque="SELECT c.id, r.rankname, r.number AS ranknumber, c.lname, c.fname, c.callsign, v.subtype, v.name AS vname, u.name AS uname, c.bday, c.status, c.notes";
       }
       else
       {
-        $skillque="SELECT c.id, r.rankname, r.number AS ranknumber, c.lname, c.fname, u.name as uname, c.bday, c.status, c.notes";
+        $skillque="SELECT c.id, r.rankname, r.number AS ranknumber, c.lname, c.fname, c.callsign, u.name as uname, c.bday, c.status, c.notes";
       }
       $crewnumberque="SELECT COUNT(*) count FROM crew c  LEFT JOIN unit u ON c.parent=u.id ";
       $joins="";
@@ -176,6 +193,9 @@ if(isset($_GET["type"]))
       }
       $ordertable[0]="c.rank DESC";
       $ordertable[sizeof($ordertable)]="c.fname ASC";
+      if($callUsed) {
+    	$ordertable[sizeof($ordertable)]="c.callsign ASC";
+      }
       for ($i=0; $i<sizeof($skillsUsedArray); $i++)
       {
         $ordertable[sizeof($ordertable)]="s{$i}.value ASC";
@@ -251,6 +271,10 @@ if(isset($_GET["type"]))
     echo "<th class='rostertable'><a class='rostertabletopic' href='index.php?action=personneltable&amp;type={$personnelType}&amp;status={$linkstatus}&amp;order={$tableorder}&amp;first=0'>Rank</a></th>\n";
     $tableorder++;
     echo "<th class='rostertable'><a class='rostertabletopic' href='index.php?action=personneltable&amp;type={$personnelType}&amp;status={$linkstatus}&amp;order={$tableorder}&amp;first=0'>Name</a></th>\n";
+    if($callUsed) {
+    	$tableorder++;
+    	echo "<th class='rostertable'><a class='rostertabletopic' href='index.php?action=personneltable&amp;type={$personnelType}&amp;status={$linkstatus}&amp;order={$tableorder}&amp;first=0'>Callsign</a></th>\n";
+    }
     for ($i=0; $i<sizeof($skillsUsedArray); $i++)
     {
       $temp=$skillsUsedArray[$i];
@@ -289,16 +313,19 @@ if(isset($_GET["type"]))
         echo "<img style='margin-top:2px; margin-right:2px; float:right;' src='./images/small/notes.png' alt='notes' />";
       }
       echo "</td>\n";
+      if($callUsed) {
+      	echo "<td class='rostertable'>{$array[callsign]}</td>\n";
+      }
       for ($i=0; $i<sizeof($skillsUsedArray); $i++)
       {
         $temp=$skillsUsedArray[$i];
         if($equippable)
         {
-          $j=$i+11;
+          $j=$i+12;
         }
         else
         {
-          $j=$i+9;
+          $j=$i+10;
         }
         echo "<td class='rostertable'>$array[$j]</td>\n";
       }

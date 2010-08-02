@@ -1,0 +1,4 @@
+Version 0.7.6
+--------------------------
++Bug: set default time zone warning
++Added callsign field

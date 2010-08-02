@@ -6,6 +6,8 @@ if (!isset($_SESSION['initiated']))
   $_SESSION['initiated']=true;
 }
 
+date_default_timezone_set("America/Los_Angeles");
+
 $timerstart=microtime(true);
 
 define('s3Ew4bjJd4f', TRUE);
