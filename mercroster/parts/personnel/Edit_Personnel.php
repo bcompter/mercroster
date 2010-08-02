@@ -215,6 +215,7 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
       $statusArray[2]="On Leave";
       $statusArray[3]="Retired";
       $statusArray[4]="Deceased";
+      $statusArray[5]="Missing In Action";
       echo "<tr>\n";
       echo "<td class='edittableleft'>Status:</td>\n";
       echo "<td colspan='6'>\n";

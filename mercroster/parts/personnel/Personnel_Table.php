@@ -67,7 +67,7 @@ if(isset($_GET["type"]))
       $linkstatus="in";
       break;
     case "out":
-      $gstatus="(c.status='Retired' OR c.status='Deceased')";
+      $gstatus="(c.status='Retired' OR c.status='Deceased' OR c.status='Missing In Action')";
       $linkstatus="out";
       break;
     default:
