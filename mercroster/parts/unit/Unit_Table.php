@@ -286,7 +286,7 @@ function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid)
     $crews=getCrews($uID, $crewsArray);
     echo "<table class='lance' border='0'>\n";
     echo "<tr>\n";
-    echo "<td colspan='5'>\n";
+    echo "<td colspan='6'>\n";
     echo "<table class='organizationtable' style='background-color: {$vehicleType};' border='0'>\n";
     echo "<tr>\n";
     $lvlimagepath = "./images/unitlevel/ul{$unit[8]}.png";
@@ -376,10 +376,11 @@ function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid)
         $rating=calculateInfantryRank($crew[Piloting]);
       }
        
-      echo "<tr>\n";
+      echo "<tr>\n";     
       echo "<td class='experiancetd'>{$rating}</td>\n";
+      echo "<td class='calltd'>{$crew[callsign]}</td>\n";
       echo "<td class='ranktd'>{$crew[rankname]}</td>\n";
-      echo "<td class='nametd'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$crew[pid]}'>{$crew[fname]} {$crew[lname]}</a></td>\n";
+      echo "<td class='nametd'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$crew[pid]}'>{$crew[fname]} {$crew[lname]}</a></td>\n";    
       echo "<td class='ranktd'>{$crew[Gunnery]} / {$crew[Piloting]}</td>\n";
       echo "<td class='vehicletd'>{$crew[subtype]} {$crew[vname]}</td>\n";
 
@@ -505,7 +506,7 @@ $organizationResult=$dbf->queryselect("SELECT u.id, u.name, u.type, ut.color, u.
 $organizationArray=$dbf->resulttoarray($organizationResult);
 
 //$crewResult=$dbf->queryselect("SELECT c.parent, r.rankname, c.lname, c.fname, v.name as vname, v.subtype, c.id as pid, v.id as uid, et.requirement FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN equipmenttypes et ON v.type=et.id ORDER BY c.rank DESC, c.joiningdate ASC, c.lname ASC, c.id ASC;");
-$crewResult=$dbf->queryselect("SELECT c.parent, r.rankname, c.lname, c.fname, v.name as vname, v.subtype, c.id as pid, v.id as uid, et.requirement FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN equipmenttypes et ON v.type=et.id LEFT JOIN unit u ON c.parent=u.id WHERE {$unitString} ORDER BY c.rank DESC, c.joiningdate ASC, c.lname ASC, c.id ASC;");
+$crewResult=$dbf->queryselect("SELECT c.parent, r.rankname, c.lname, c.fname, c.callsign, v.name as vname, v.subtype, c.id as pid, v.id as uid, et.requirement FROM crew c LEFT JOIN ranks r ON c.rank=r.number LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN equipmenttypes et ON v.type=et.id LEFT JOIN unit u ON c.parent=u.id WHERE {$unitString} ORDER BY c.rank DESC, c.joiningdate ASC, c.lname ASC, c.id ASC;");
 $crewsArray=$dbf->resulttoarray($crewResult);
 
 for ($i=0; $i<sizeof($crewsArray); $i++)

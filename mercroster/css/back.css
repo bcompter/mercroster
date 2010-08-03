@@ -1560,6 +1560,11 @@ td.nametd {
 	width: 150px;
 }
 
+td.calltd {
+    width: 1px;
+    padding-right: 10px;
+}
+
 td.vehicletd {
 	
 }
