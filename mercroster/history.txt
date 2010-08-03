@@ -4,3 +4,4 @@ Version 0.7.6
 + Added callsign field
 + Missing in Action Status
 + Bug: Callsign column always showing
++ added callsign field to mercenary_roster.sql

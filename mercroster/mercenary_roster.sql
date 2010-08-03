@@ -116,6 +116,7 @@ CREATE TABLE  `mercroster`.`crew` (
   `rank` int(10) unsigned NOT NULL DEFAULT '1',
   `lname` varchar(30) NOT NULL,
   `fname` varchar(30) NOT NULL,
+  `callsign` varchar(30) NOT NULL,
   `parent` int(10) unsigned NOT NULL DEFAULT '0',
   `crewnumber` int(10) unsigned NOT NULL DEFAULT '1',
   `joiningdate` date DEFAULT NULL,
