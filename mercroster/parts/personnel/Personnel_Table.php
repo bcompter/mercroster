@@ -75,14 +75,14 @@ if(isset($_GET["type"]))
       break;
   }
   
-  //Check to see if any callsigns are being used
+  //Check to see if any callsigns are being used - assume personnel without type get no call signs
   $callUsed = 0;
-  $personelQeury="SELECT callsign FROM crew c LEFT JOIN personnelpositions p ON c.id=p.person WHERE personneltype='{$personnelType}'";
-  //$personelQeury.=$gstatus;
+  $personelQeury="SELECT callsign FROM crew c LEFT JOIN personnelpositions p ON c.id=p.person WHERE p.personneltype='{$personnelType}' AND ";
+  $personelQeury.=$gstatus;
   $personnelResult=$dbf->queryselect($personelQeury);
   while($array = mysql_fetch_array($personnelResult, MYSQL_BOTH))
   {
- 	if(!is_null($array[callsign]) || $array[callsign]!="") {
+ 	if(!is_null($array[callsign]) && $array[callsign]!="") {
  		$callUsed = 1;
  		break;
  	}
