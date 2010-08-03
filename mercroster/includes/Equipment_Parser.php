@@ -40,6 +40,7 @@ class Equipmentparser extends Parser
             $weight=$this->strip($_POST['weight']);
             $notes=$this->strip($_POST['notes']);
             $type=$this->strip($_POST['type']);
+            $troid=$this->strip($_POST['tro']);
             $image=$this->strip($_POST['image']);
 
             $errMSG="";
@@ -53,7 +54,7 @@ class Equipmentparser extends Parser
             }
             if($errMSG=="")
             {
-              $queryArray[sizeof($queryArray)] = "UPDATE equipment SET type='{$type}', name='{$name}', subtype='{$subtype}', weight='{$weight}', regnumber='{$regnumber}', notes='{$notes}', image='{$image}' WHERE id='{$id}';";
+              $queryArray[sizeof($queryArray)] = "UPDATE equipment SET type='{$type}', name='{$name}', subtype='{$subtype}', weight='{$weight}', regnumber='{$regnumber}', notes='{$notes}', troid='{$troid}', image='{$image}' WHERE id='{$id}';";
               $dbf->queryarray($queryArray);
               $parseheader="location:index.php?action=editequipment&equipment={$id}";
             }
@@ -75,6 +76,7 @@ class Equipmentparser extends Parser
           $weight=$this->strip($_POST['weight']);
           $notes=$this->strip($_POST['notes']);
           $type=$this->strip($_POST['type']);
+          $troid=$this->strip($_POST['tro']);
           $image=$this->strip($_POST['image']);
 
           $errMSG="";
@@ -88,7 +90,7 @@ class Equipmentparser extends Parser
           }
           if($errMSG=="")
           {
-            $queryArray[sizeof($queryArray)]="INSERT INTO equipment (type, name, subtype, weight, regnumber, notes, image) VALUES ('{$type}', '{$name}', '{$subtype}', '{$weight}', '{$regnumber}', '{$notes}', '{$image}');";
+            $queryArray[sizeof($queryArray)]="INSERT INTO equipment (type, name, subtype, weight, regnumber, notes, troid, image) VALUES ('{$type}', '{$name}', '{$subtype}', '{$weight}', '{$regnumber}', '{$notes}', '{$troid}', {$image}');";
             $dbf->queryarray($queryArray);
             $parseheader="location:index.php?action=equipmenttable&type={$type}&order=1&first=0";
           }

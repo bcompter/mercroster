@@ -212,6 +212,7 @@ CREATE TABLE  `mercroster`.`equipment` (
   `weight` int(10) unsigned NOT NULL,
   `regnumber` int(10) unsigned NOT NULL,
   `notes` text NOT NULL,
+  `troid` int(10) unsigned DEFAULT '0',
   `image` varchar(45) CHARACTER SET utf8 COLLATE utf8_swedish_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=198 DEFAULT CHARSET=latin1;

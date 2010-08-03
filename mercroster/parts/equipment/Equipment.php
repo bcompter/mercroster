@@ -14,7 +14,7 @@ $vehicleID=$_GET['equipment'];
 $vehicleID=stripslashes($vehicleID);
 $vehicleID=mysql_real_escape_string($vehicleID);
 
-$equipmentResult=$dbf->queryselect("SELECT v.id, v.name, v.subtype, v.weight, v.regnumber, v.notes, c.lname, c.fname, et.weightscale, c.id as personnelid, v.image FROM equipment v LEFT JOIN crew c ON v.crew=c.id LEFT JOIN equipmenttypes et ON v.type=et.id WHERE v.id='$vehicleID';");
+$equipmentResult=$dbf->queryselect("SELECT v.id, v.name, v.subtype, v.weight, v.regnumber, v.notes, v.troid, c.lname, c.fname, et.weightscale, c.id as personnelid, v.image, r.text as readout FROM equipment v LEFT JOIN crew c ON v.crew=c.id LEFT JOIN equipmenttypes et ON v.type=et.id LEFT JOIN technicalreadouts r ON v.troid=r.id WHERE v.id='$vehicleID';");
 if(mysql_num_rows($equipmentResult)==1)
 {
   $equipmentArray=mysql_fetch_array($equipmentResult, MYSQL_BOTH);
@@ -63,6 +63,19 @@ if(mysql_num_rows($equipmentResult)==1)
   echo "</tr>\n";
   echo "</table>\n";
   echo "</div>\n";
+  //TRO
+  if($equipmentArray[readout]!="" && $equipmentArray[readout]!=null)
+  {
+  	if($equipmentArray[image]!="" && $equipmentArray[image]!=null)
+  	{ 
+  		echo "<div class='unitnotesright'>\n";
+  	} else {
+  		echo "<div class='unitnotesleft'>\n";
+  	}
+    echo "<b>Readout:</b><br />\n";
+    echo "<pre>$equipmentArray[readout];</pre>\n";
+    echo "</div>\n";
+  }
   //Notes
   if($equipmentArray[notes]!="" && $equipmentArray[notes]!=null)
   {

@@ -23,6 +23,7 @@ if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')
     {
       $vehicleArray=mysql_fetch_array($vehicleResult, MYSQL_BOTH);
       $vehicleType=$vehicleArray[type];
+      $troid = $vehicleArray[troid];
     }
     else
     {
@@ -59,6 +60,9 @@ if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')
         $i++;
       }
 
+      //find available TROs
+      $troAvailable=$dbf->queryselect("SELECT id, name, weight, text FROM technicalreadouts WHERE type='$vehicleType'");
+      
       //Findding personnel images
       $equipmentimages = array();
       if ($handle = opendir('./images/equipmentimages/'))
@@ -159,7 +163,24 @@ if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')
       echo "</select>\n";
       echo "</td>\n";
       echo "</tr>\n";
-      echo "<tr><td colspan='7'><hr /></td></tr>\n";
+      //TRO
+      //Fetching Current & Available TROs
+      echo "<td class='edittableleft'>TRO:</td>\n";
+      echo "<td class='edittableright' colspan='6'>\n";
+      echo "<select class='edittablebox' name='tro'>\n";
+      echo "<option value='0'>No TRO</option>\n";
+      while($availableTroArray = mysql_fetch_array($troAvailable, MYSQL_NUM))
+      {
+      	if($availableTroArray[0] == $troid) {
+      		echo "<option value='{$availableTroArray[0]}' selected='selected'>{$availableTroArray[1]}</option>\n";	
+      	} else {
+      		echo "<option value='{$availableTroArray[0]}'>{$availableTroArray[1]}</option>\n";	
+      	}
+      } 
+      echo "</select>\n";
+      echo "</td>\n";
+      echo "</tr>\n";
+      echo "<tr><td colspan='7'><hr /></td></tr>\n";    
       //image
       echo "<tr>\n";
       echo "<td class='edittableleft'>Image:</td>\n";

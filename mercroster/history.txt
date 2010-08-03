@@ -9,3 +9,4 @@ Version 0.7.6
 + relaxed image size and type restrictions
 + added recommended image sizes to upload section
 + reorganized back.css for Unit section to allow for non-square images
++ Link TROs to Equipment
