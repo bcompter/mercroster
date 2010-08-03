@@ -876,7 +876,6 @@ div.unitimage {
 	width: 200px;
 	min-width: 200px;
 	max-width: 200px;
-	height: 200px;
 	/*border: 1px solid #530f0f;*/
 	background-color: #f1eded;
 	padding: 3px 5px 3px 5px;
@@ -899,11 +898,18 @@ div.unittableleft {
 	margin: 0px 0px 3px 0px;
 }
 
-div.unitnotes {
+div.unitnotesleft {
 	border: 1px solid #530f0f;
 	background-color: #f1eded;
 	padding: 3px 5px 3px 5px;
 	margin: 0px 0px 3px 0px;
+}
+
+div.unitnotesright {
+	border: 1px solid #530f0f;
+	background-color: #f1eded;
+	padding: 3px 5px 3px 5px;
+	margin: 0px 0px 3px 215px;
 }
 
 table.unittable {
@@ -1630,7 +1636,6 @@ img.unitlogoimage {
 	margin-left: auto;
 	margin-right: auto;
 	width: 200px;
-	height: 200px;
 }
 
 /*

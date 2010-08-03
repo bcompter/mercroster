@@ -141,20 +141,16 @@ if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='3')
     $unitlevelresult = $dbf->queryselect("SELECT * FROM unitlevel ORDER BY prefpos ASC;");
 
     //Findding and organizing units tactical symbols
-    $desired_extension = 'png';
     $leftimages = array();
     if ($handle = opendir('./images/unittype/'))
     {
       while (false !== ($file = readdir($handle)))
       {
         $fileChunks = explode(".", $file);
-        if ($file != "." && $file != ".." &&  $fileChunks[1] == $desired_extension)
+        if ($file != "." && $file != ".." &&  preg_match('/png|jpg|gif/', $fileChunks[1]))
         {
           list($width, $height) = getimagesize("images/unittype/".$file);
-          if($width==58 && $height==30)
-          {
             array_push($leftimages, $file);
-          }
         }
       }
       closedir($handle);
@@ -162,20 +158,15 @@ if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='3')
     sort($leftimages);
 
     //Findding and organizing units tactical symbols
-    $desired_extension = 'png';
     $unitimages = array();
     if ($handle = opendir('./images/unitimages/'))
     {
       while (false !== ($file = readdir($handle)))
       {
         $fileChunks = explode(".", $file);
-        if ($file != "." && $file != ".." &&  $fileChunks[1] == $desired_extension)
+        if ($file != "." && $file != ".." &&  preg_match('/png|jpg|gif/', $fileChunks[1]))
         {
-          list($width, $height) = getimagesize("images/unitimages/".$file);
-          if($width==200 && $height==200)
-          {
             array_push($unitimages, $file);
-          }
         }
       }
       closedir($handle);

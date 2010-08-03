@@ -60,20 +60,15 @@ if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')
       }
 
       //Findding personnel images
-      $desired_extension = 'png';
       $equipmentimages = array();
       if ($handle = opendir('./images/equipmentimages/'))
       {
         while (false !== ($file = readdir($handle)))
         {
           $fileChunks = explode(".", $file);
-          if ($file != "." && $file != ".." &&  $fileChunks[1] == $desired_extension)
+          if ($file != "." && $file != ".." && preg_match('/png|jpg|gif/', $fileChunks[1]))
           {
-            list($width, $height) = getimagesize("images/equipmentimages/".$file);
-            if($width==200 && $height==200)
-            {
-              array_push($equipmentimages, $file);
-            }
+            array_push($equipmentimages, $file);
           }
         }
         closedir($handle);

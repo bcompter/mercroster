@@ -548,20 +548,15 @@ case "5":
   $usedUnitLevelArray=$dbf->resulttoarraysingle($usedUnitLevelResult);
 
   //Findding and organizing units tactical symbols
-  $desired_extension = 'png';
   $unittypeimages=array();
   if ($handle=opendir('./images/unitlevel/'))
   {
     while (false !== ($file = readdir($handle)))
     {
       $fileChunks = explode(".", $file);
-      if ($file != "." && $file != ".." &&  $fileChunks[1] == $desired_extension)
+      if ($file != "." && $file != ".." &&  preg_match('/png|jpg|gif/', $fileChunks[1]))
       {
-        list($width, $height) = getimagesize("images/unitlevel/".$file);
-        if($width==58 && $height==14)
-        {
-          array_push($unittypeimages, $file);
-        }
+      	array_push($unittypeimages, $file);
       }
     }
     closedir($handle);

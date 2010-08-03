@@ -146,20 +146,15 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
     $availableVehicleResult=$dbf->queryselect("SELECT e.id, e.name, e.subtype, e.crew, et.requirement FROM equipment e LEFT JOIN equipmenttypes et ON e.type=et.id WHERE crew='0';");
 
     //Findding personnel images
-    $desired_extension = 'png';
     $personnelimages = array();
     if ($handle = opendir('./images/personnelimages/'))
     {
       while (false !== ($file = readdir($handle)))
       {
         $fileChunks = explode(".", $file);
-        if ($file != "." && $file != ".." &&  $fileChunks[1] == $desired_extension)
+        if ($file != "." && $file != ".." && preg_match('/png|jpg|gif/', $fileChunks[1]))
         {
-          list($width, $height) = getimagesize("images/personnelimages/".$file);
-          if($width==200 && $height==200)
-          {
-            array_push($personnelimages, $file);
-          }
+          array_push($personnelimages, $file);
         }
       }
       closedir($handle);

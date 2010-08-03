@@ -20,7 +20,7 @@ class Parser
    * @param $data
    * @return boolean
    */
-  private function checkposint($data)
+  public function checkposint($data)
   {
     if(ctype_digit($data) && $data>0)
     {

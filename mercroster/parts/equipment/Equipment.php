@@ -66,7 +66,13 @@ if(mysql_num_rows($equipmentResult)==1)
   //Notes
   if($equipmentArray[notes]!="" && $equipmentArray[notes]!=null)
   {
-    echo "<div class='unitnotes'>\n";
+  	if($equipmentArray[image]!="" && $equipmentArray[image]!=null)
+  	{ 
+  		echo "<div class='unitnotesright'>\n";
+  	} else {
+  		echo "<div class='unitnotesleft'>\n";
+  	}
+    
     $text=nl2br($equipmentArray[notes]);
     $text=$bbf->addTags($text);
     echo "<b>Notes:</b><br />\n";

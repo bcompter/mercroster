@@ -235,20 +235,15 @@ else
       echo "</div>\n";
 
       //Finding images
-      $desired_extension='png';
       $images=array();
       if($handle=opendir($opath))
       {
         while (false!==($file=readdir($handle)))
         {
           $fileChunks=explode(".", $file);
-          if ($file!="." && $file!= ".." && $fileChunks[1]==$desired_extension)
+          if ($file!="." && $file!= ".." && preg_match('/png|jpg|gif/', $fileChunks[1]))
           {
-            list($iwidth, $iheight)=getimagesize($opath.$file);
-            if(($iwidth==$width && $iheight==$height) || ($width==0 && $height==0))
-            {
-              array_push($images, $file);
-            }
+          	array_push($images, $file);
           }
         }
         closedir($handle);
@@ -256,6 +251,39 @@ else
       sort($images);
 
       echo "<div id='typeeditarea' class='typeeditarea'>\n";
+      echo "Add Image  (<i>recommended size: {$height}px x {$width}px</i>)<br />\n";
+      if(isset($_GET['mgs']))
+      {
+        switch ($_GET['mgs'])
+        {
+          case "FileNotImage":
+            $errormsg="Unable to upload image. No file given.";
+            break;
+          case "FileTooLarge":
+            $errormsg="Unable to upload image. File too large.";
+            break;
+          case "FileExists":
+            $errormsg="Unable to upload image. File already exists.";
+            break;
+          default:
+            $errormsg="Unable to upload image..";
+            break;
+
+        }
+        echo "<b>" . $errormsg . "</b><br />\n";
+        echo "<b>Make corrections and try again.</b><br />\n";
+      }
+      echo "<form enctype='multipart/form-data' action='index.php?action=imageupload' method='post'>\n";
+      echo "<div>\n";
+      echo "<input type='hidden' name='sub' value='{$sub}' />\n";
+      echo "<input type='hidden' name='path' value='{$path}' />\n";
+      echo "<input type='hidden' name='type' value='imageadd' />\n";
+      echo "<input name='file' type='file' />\n";
+      echo "<input type='submit' value='Submit' />\n";
+      echo "</div>\n";
+      echo "</form>\n";
+      echo "<hr />\n";
+      
       for ($i=0; $i<sizeof($images); $i++)
       {
         echo "<table style='display: inline;'>\n";
@@ -293,41 +321,8 @@ else
         echo "</tr>\n";
         echo "</table>\n";
       }
-
-      echo "<hr />\n";
-      echo "Add Image<br />\n";
-      if(isset($_GET['mgs']))
-      {
-        switch ($_GET['mgs'])
-        {
-          case "FileNotImage":
-            $errormsg="Unable to upload image. No file given.";
-            break;
-          case "FileTooLarge":
-            $errormsg="Unable to upload image. File too large.";
-            break;
-          case "FileExists":
-            $errormsg="Unable to upload image. File already exists.";
-            break;
-          default:
-            $errormsg="Unable to upload image..";
-            break;
-
-        }
-        echo "<b>" . $errormsg . "</b><br />\n";
-        echo "<b>Make corrections and try again.</b><br />\n";
-      }
-      echo "<form enctype='multipart/form-data' action='index.php?action=imageupload' method='post'>\n";
-      echo "<div>\n";
-      echo "<input type='hidden' name='sub' value='{$sub}' />\n";
-      echo "<input type='hidden' name='path' value='{$path}' />\n";
-      echo "<input type='hidden' name='type' value='imageadd' />\n";
-      echo "<input name='file' type='file' />\n";
-      echo "<input type='submit' value='Submit' />\n";
+     
       echo "</div>\n";
-      echo "</form>\n";
-      echo "</div>\n";
-
       echo "</div>\n";
       break;
 
@@ -423,14 +418,13 @@ else
     default:
 
       //Finding and organizing command images
-      $desired_extension='png';
       $commandimages=array();
       if ($handle = opendir('./images/commandimages/'))
       {
         while (false!==($file = readdir($handle)))
         {
           $fileChunks=explode(".", $file);
-          if ($file!="." && $file!=".." &&  $fileChunks[1]==$desired_extension)
+          if ($file!="." && $file!=".." && preg_match('/png|jpg|gif/', $fileChunks[1]))
           {
             array_push($commandimages, $file);
           }
@@ -440,20 +434,15 @@ else
       sort($commandimages);
 
       //Finding and organizing command icons
-      $desired_extension='png';
       $commandicons=array();
       if ($handle = opendir('./images/commandicons/'))
       {
         while (false!==($file = readdir($handle)))
         {
           $fileChunks=explode(".", $file);
-          if ($file!="." && $file!=".." &&  $fileChunks[1]==$desired_extension)
+          if ($file!="." && $file!=".." &&  preg_match('/png|jpg|gif/', $fileChunks[1]))
           {
-            list($width, $height) = getimagesize("images/commandicons/".$file);
-            if($width==64 && $height==64)
-            {
-              array_push($commandicons, $file);
-            }
+          	array_push($commandicons, $file);
           }
         }
         closedir($handle);
