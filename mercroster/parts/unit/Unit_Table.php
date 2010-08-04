@@ -382,7 +382,7 @@ function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid)
       echo "<td class='ranktd'>{$crew[rankname]}</td>\n";
       echo "<td class='nametd'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$crew[pid]}'>{$crew[fname]} {$crew[lname]}</a></td>\n";    
       echo "<td class='ranktd'>{$crew[Gunnery]} / {$crew[Piloting]}</td>\n";
-      echo "<td class='vehicletd'>{$crew[subtype]} {$crew[vname]}</td>\n";
+      echo "<td class='vehicletd'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$crew[uid]}'>{$crew[subtype]} {$crew[vname]}</a></td>\n";
 
       echo "</tr>\n";
     }

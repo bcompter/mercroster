@@ -11,3 +11,4 @@ Version 0.7.6
 + reorganized back.css for Unit section to allow for non-square images
 + Link TROs to Equipment
 + Special Abilities
++ Added ranks, callsigns, and equipment (plus links) to Unit.php

@@ -25,7 +25,7 @@ if(mysql_num_rows($unitResult)==1)
   $parentUnitResult=$dbf->queryselect("SELECT id, name FROM unit WHERE id='$unitArray[parent]';");
   $parentUnitArray=mysql_fetch_array($parentUnitResult, MYSQL_BOTH);
 
-  $personnelResult=$dbf->queryselect("SELECT c.id, c.lname, c.fname, v.name, v.subtype FROM crew c LEFT JOIN equipment v ON c.id=v.crew WHERE parent='$unitid' ORDER BY c.rank DESC, c.joiningdate ASC, c.lname ASC, c.id ASC;");
+  $personnelResult=$dbf->queryselect("SELECT c.id, r.rankname, c.lname, c.fname, c.callsign, v.name, v.subtype, v.id AS vid FROM crew c LEFT JOIN equipment v ON c.id=v.crew LEFT JOIN ranks r ON c.rank=r.number WHERE parent='$unitid' ORDER BY c.rank DESC, c.joiningdate ASC, c.lname ASC, c.id ASC;");
   $personnelArray=$dbf->resulttoarray($personnelResult);
   $personnelArraySize=sizeof($personnelArray);
 
@@ -93,13 +93,22 @@ if(mysql_num_rows($unitResult)==1)
       echo "<th class='unittablecell'></th>\n";
     }
     $temp=$personnelArray[$i];
+    
+    $name = $temp[rankname]." ".$temp[fname];
+    if($temp[callsign]!="") 
+    {
+    	$name = $name." \"".$temp[callsign]."\"";	
+    }
+    $name = $name." ".$temp[lname];
     if($action!="units")
     {
-      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$temp[id]}'>{$temp[fname]} {$temp[lname]}</a></td>\n";
+      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$temp[id]}'>{$name}</a></td>\n";
+      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$temp[vid]}'>{$temp[subtype]} {$temp[name]}</a></td>\n";
     }
     else
     {
-      echo"<td class='unittablecell'>{$temp[fname]} {$temp[lname]}</td>\n";
+      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=notable&amp;personnel={$temp[id]}'>{$name}</a></td>\n";
+      echo"<td class='unittablecell'>{$temp[subtype]} {$temp[name]}</td>\n";
     }
     echo "</tr>\n";
   }
