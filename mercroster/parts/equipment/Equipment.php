@@ -23,7 +23,7 @@ if(mysql_num_rows($equipmentResult)==1)
   echo "<div class='genericheader'>\n";
   echo "<b>Vehicle number: {$equipmentArray[regnumber]}</b>\n";
   //Edit button
-  if(isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')
+  if($action!="readout" && isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')
   {
     echo "<a class='genericedit' href='index.php?action=editequipment&amp;equipment={$equipmentArray[id]}'>edit</a>\n";
   }
@@ -59,32 +59,29 @@ if(mysql_num_rows($equipmentResult)==1)
   //Assigned to
   echo "<tr>\n";
   echo "<td class='generictablecell15'><b>Assigned to:</b></td>\n";
-  echo "<td class='generictablecell85'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$equipmentArray[personnelid]}'>{$equipmentArray[fname]} {$equipmentArray[lname]}</a></td>\n";
+  if($action=="readout") 
+  {
+  	echo "<td class='generictablecell85'><a class='personnellink' href='index.php?action=notable&amp;personnel={$equipmentArray[personnelid]}'>{$equipmentArray[fname]} {$equipmentArray[lname]}</a></td>\n";
+  } 
+  else 
+  {
+  	echo "<td class='generictablecell85'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$equipmentArray[personnelid]}'>{$equipmentArray[fname]} {$equipmentArray[lname]}</a></td>\n";
+  }
   echo "</tr>\n";
   echo "</table>\n";
   echo "</div>\n";
   //TRO
   if($equipmentArray[readout]!="" && $equipmentArray[readout]!=null)
   {
-  	if($equipmentArray[image]!="" && $equipmentArray[image]!=null)
-  	{ 
-  		echo "<div class='unitnotesright'>\n";
-  	} else {
-  		echo "<div class='unitnotesleft'>\n";
-  	}
+  	echo "<div class='unitnotes'>\n";
     echo "<b>Readout:</b><br />\n";
     echo "<pre>$equipmentArray[readout];</pre>\n";
     echo "</div>\n";
   }
   //Notes
   if($equipmentArray[notes]!="" && $equipmentArray[notes]!=null)
-  {
-  	if($equipmentArray[image]!="" && $equipmentArray[image]!=null)
-  	{ 
-  		echo "<div class='unitnotesright'>\n";
-  	} else {
-  		echo "<div class='unitnotesleft'>\n";
-  	}
+  { 
+  	echo "<div class='unitnotes'>\n";
     
     $text=nl2br($equipmentArray[notes]);
     $text=$bbf->addTags($text);

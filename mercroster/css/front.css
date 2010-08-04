@@ -261,7 +261,7 @@ div.unitimage {
 	width: 200px;
 	min-width: 200px;
 	max-width: 200px;
-	height: 200px;
+	min-height: 200px;
 	background-color: #f1eded;
 	padding: 3px 5px 3px 5px;
 	margin: 0px 0px 3px 0px;
@@ -401,4 +401,11 @@ div.postfooter {
 
 div.postlinks {
 	float: right;
+}
+
+img.unitlogoimage {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	height: 200px;
 }

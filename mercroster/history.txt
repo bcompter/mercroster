@@ -12,3 +12,4 @@ Version 0.7.6
 + Link TROs to Equipment
 + Special Abilities
 + Added ranks, callsigns, and equipment (plus links) to Unit.php
++ 'readout' action to display equipment on front page

@@ -108,7 +108,7 @@ if(mysql_num_rows($unitResult)==1)
     else
     {
       echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=notable&amp;personnel={$temp[id]}'>{$name}</a></td>\n";
-      echo"<td class='unittablecell'>{$temp[subtype]} {$temp[name]}</td>\n";
+      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=readout&amp;equipment={$temp[vid]}'>{$temp[subtype]} {$temp[name]}</a></td>\n";
     }
     echo "</tr>\n";
   }

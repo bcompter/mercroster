@@ -898,18 +898,11 @@ div.unittableleft {
 	margin: 0px 0px 3px 0px;
 }
 
-div.unitnotesleft {
+div.unitnotes {
 	border: 1px solid #530f0f;
 	background-color: #f1eded;
 	padding: 3px 5px 3px 5px;
 	margin: 0px 0px 3px 0px;
-}
-
-div.unitnotesright {
-	border: 1px solid #530f0f;
-	background-color: #f1eded;
-	padding: 3px 5px 3px 5px;
-	margin: 0px 0px 3px 215px;
 }
 
 table.unittable {
@@ -1635,7 +1628,7 @@ img.unitlogoimage {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
-	width: 200px;
+	height: 200px;
 }
 
 /*

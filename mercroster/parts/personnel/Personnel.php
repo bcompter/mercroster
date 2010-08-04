@@ -162,7 +162,7 @@ if(mysql_num_rows($personnelResult)==1)
   }
   else
   {
-    echo "<td class='generictablecell85' colspan='2'>{$personnelArray[subtype]} {$personnelArray[equipmentname]}</td>\n";
+    echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=readout&amp;equipment={$personnelArray[equipmentid]}'>{$personnelArray[subtype]} {$personnelArray[equipmentname]}</a></td>\n";
   }
   echo "</tr>\n";
   //Squad

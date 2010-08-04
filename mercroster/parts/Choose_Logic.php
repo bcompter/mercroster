@@ -71,6 +71,15 @@ switch ($action)
     define('F3xVH894Vdsv', TRUE);
     require("parts/personnel/Personnel.php");
     break;
+  case "readout":
+    $title="Equipment";
+    $headerbar="front";
+    require("parts/headersbars/header.php");
+    require("parts/headersbars/front_leftbar.php");
+    require("parts/headersbars/front_rightbar.php");
+    define('g6afyHgJhHu87F', TRUE);
+    require("parts/equipment/Equipment.php");
+    break;
   case "units":
     $title="Unit";
     $headerbar="front";
