@@ -474,6 +474,74 @@ class Setupparser  extends Parser
           }
           break;
 
+        case "AbilityType":
+          switch ($_POST['QueryAction'])
+          {
+            case "Delete":
+              if($this->checkposint($_POST['ID']))
+              {
+                $id=$this->strip($_POST['ID']);
+                $queryArray[sizeof($queryArray)]="DELETE FROM abilitytypes WHERE id='{$id}';";
+                $dbf->queryarray($queryArray);
+                $parseheader="location:index.php?action=toe&page=7";
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+
+            case "Change":
+              if($this->checkposint($_POST['ID']))
+              {
+                $id=$this->strip($_POST['ID']);
+                $name=$this->strip($_POST['name']);
+
+                $errMSG="";
+                if($name=="")
+                {
+                  $errMSG="no name";
+                }
+                if($errMSG=="")
+                {
+                  $queryArray[sizeof($queryArray)] = "UPDATE abilitytypes SET name='{$name}' WHERE id='{$id}';";
+                  $dbf->queryarray($queryArray);
+                  $parseheader="location:index.php?action=toe&page=7&sub={$id}";
+                }
+                else
+                {
+                  $parseheader="location:index.php?action=toe&page=7&sub={$id}err={$errMSG}";
+                }
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+
+            case "Add":
+              $name=$this->strip($_POST['name']);
+
+              $errMSG="";
+              if($name=="")
+              {
+                $errMSG="no name";
+              }
+
+              if($errMSG=="")
+              {
+                $queryArray[sizeof($queryArray)] = "INSERT INTO abilitytypes (name) VALUES ('{$name}');";
+                $dbf->queryarray($queryArray);
+                $parseheader="location:index.php?action=toe&page=7";
+              }
+              else
+              {
+                $parseheader="location:index.php?action=toe&page=7&err={$errMSG}";
+              }
+              break;
+          }
+          break;
+		
         case "SkillType":
           switch ($_POST['QueryAction'])
           {
@@ -552,8 +620,8 @@ class Setupparser  extends Parser
               }
               break;
           }
-          break;
-
+          break;  
+          
         case "SkillRequirement":
           switch ($_POST['QueryAction'])
           {

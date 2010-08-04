@@ -53,6 +53,9 @@ if(mysql_num_rows($personnelResult)==1)
 
   $personnelSkillResult=$dbf->queryselect("SELECT st.name, s.value FROM skills s, skilltypes st WHERE s.skill=st.id AND s.person='{$personnelArray[id]}' ORDER BY st.name ASC;");
 
+  //Fetch special abilities
+  $usedAbilities=$dbf->resulttoarray($dbf->queryselect("SELECT a.id, t.name, a.notes, a.ability, t.id AS abilityid FROM abilities a, abilitytypes t WHERE a.person='{$personnelArray[id]}' AND a.ability=t.id;"));
+        
   //Fetch kills from database
   $killsRetVal = $dbf->queryselect("SELECT parent, type, KillDate FROM kills;");
   $i=0;
@@ -125,6 +128,31 @@ if(mysql_num_rows($personnelResult)==1)
     echo "<td class='generictablecell85' colspan='2'>{$skillArray[value]}</td>\n";
     echo "</tr>\n";
   }
+  //special abilities
+  $string="";
+  for($i=0; $i<sizeof($usedAbilities); $i++)
+  {
+  	$abilityArray=$usedAbilities[$i];
+  	if($i==0)
+    {
+       $string = $string.$abilityArray[1];
+    }
+    else
+    {
+       $string = $string.", ".$abilityArray[1];
+    }
+    if($abilityArray[2]!="") {
+       	$string = $string." (".$abilityArray[2].")";
+    }
+  }
+  if($i>0)
+  {
+    echo "<tr>\n";
+    echo "<td class='generictablecell15'><b>Abilities:</b></td>\n";
+    echo "<td class='generictablecell85'>{$string}</td>\n";
+    echo "</tr>\n";
+  }
+  
   //Equipment
   echo "<tr>\n";
   echo "<td class='generictablecell15'><b>Equipment:</b></td>\n";

@@ -30,6 +30,8 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
 
       $usedSkills=$dbf->resulttoarray($dbf->queryselect("SELECT s.id, st.name, s.value, s.skill, st.id AS skillid FROM skills s, skilltypes st WHERE s.person='{$array[id]}' AND s.skill=st.id;"));
       $freeSkillArray=$dbf->resulttoarray($dbf->queryselect("SELECT id, name FROM skilltypes ORDER BY name ASC;"));
+      $usedAbilities=$dbf->resulttoarray($dbf->queryselect("SELECT a.id, t.name, a.notes, a.ability, t.id AS abilityid FROM abilities a, abilitytypes t WHERE a.person='{$array[id]}' AND a.ability=t.id;"));
+      $freeAbilitiesArray=$dbf->resulttoarray($dbf->queryselect("SELECT id, name FROM abilitytypes ORDER BY name ASC;"));
       $positionsArray=$dbf->resulttoarray($dbf->queryselect("SELECT pp.id, pp.personneltype, pp.person, ct.type FROM personnelpositions pp, crewtypes ct WHERE pp.personneltype=ct.id AND person='{$array[id]}' ORDER BY ct.prefpos ASC;"));
       $usedPositionsIDArray=$dbf->resulttoarraysingle($dbf->queryselect("SELECT ct.id FROM personnelpositions pp, crewtypes ct WHERE pp.personneltype=ct.id AND person='{$array[id]}' ORDER BY ct.prefpos ASC;"));
       $ctids="";
@@ -403,6 +405,87 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
       echo "</form>\n";
 
       echo "<hr />\n";
+      
+   	  //Abilities
+   	  echo "<b>Special Abilities</b>\n";
+   	  $usedcounter=0;
+      for($i=0; $i<sizeof($usedAbilities); $i++)
+      {
+        $abilityArray=$usedAbilities[$i];
+
+        $usedcounter++;
+
+        echo "<form action='index.php?action=personnelquery' method='post'>\n";
+        echo "<table border='0'>\n";
+        echo "<tr>\n";
+        echo "<td class='edittableleft'>{$abilityArray[1]}</td>\n";
+        echo "<td>\n";
+        $inputFields->textinput("edittablebox","notes",60,"{$abilityArray[2]}");
+        echo "</td>\n";
+        echo "<td>\n";
+        echo "<input type='hidden' name='ID' value='{$abilityArray[0]}' />\n";
+        echo "<input type='hidden' name='personnel' value='{$array[id]}' />\n";
+        echo "<input type='hidden' name='QueryType' value='Ability' />\n";
+        echo "<input class='edittablebutton' name='QueryAction' type='submit' value='Change' />\n";
+        echo "<input class='edittablebutton' name='QueryAction' type='submit' value='Remove' onclick='return confirmSubmit(\"Remove\")' />\n";
+        echo "</td>\n";
+        echo "</tr>\n";
+        echo "</table>\n";
+        echo "</form>\n";
+
+      }
+      if($usedcounter==0)
+      {
+        echo "No Abilities\n";
+      }
+
+      echo "<form action='index.php?action=personnelquery' method='post'>\n";
+      echo "<table border='0'>\n";
+      echo "<tr>\n";
+      echo "<td class='edittableleft'>Add Ability:</td>\n";
+      echo "<td>\n";
+      echo "<select class='edittablebox' name='abilitytype'>\n";
+      $counter=0;
+      for($i=0; $i<sizeof($freeAbilitiesArray); $i++)
+      {
+        $abilityArray=$freeAbilitiesArray[$i];
+        if($abilityArray!=null)
+        {
+          if(!in_array($abilityArray[0], $usedAbilities))
+          {
+            echo "<option value='{$abilityArray[0]}'>{$abilityArray[1]}</option>\n";
+            $counter++;
+          }
+        }
+      }
+      if($counter==0)
+      {
+        echo "<option value=''>No Abilities</option>\n";
+      }
+
+      echo "</select>\n";
+      echo "</td>\n";
+      echo "<td>\n";
+      $inputFields->textinput("edittablebox","notes",60,"");
+      echo "</td>\n";
+      echo "<td>\n";
+      echo "<input type='hidden' name='QueryType' value='Ability' />\n";
+      echo "<input type='hidden' name='personnel' value='{$array[id]}' />\n";
+      if($counter==0)
+      {
+        echo "<input class='edittablebutton' name='QueryAction' type='submit' value='Add' disabled='disabled'/>\n";
+      }
+      else
+      {
+        echo "<input class='edittablebutton' name='QueryAction' type='submit' value='Add' />\n";
+      }
+      echo "</td>\n";
+      echo "</tr>\n";
+      echo "</table>\n";
+      echo "</form>\n";
+
+      echo "<hr />\n";
+      
       echo "<b>Positions</b>\n";
 
       for($i=0; $i<sizeof($positionsArray); $i++)

@@ -231,6 +231,57 @@ class Personnelparser extends Parser
               break;
           }
           break;
+          
+          case "Ability":
+          switch ($_POST['QueryAction'])
+          {
+            case "Remove":
+              if($this->checkposint($_POST['personnel']) && $this->checkposint($_POST['ID']))
+              {
+                $personnel=$this->strip($_POST['personnel']);
+                $id=$this->strip($_POST['ID']);
+                $queryArray[sizeof($queryArray)] = "DELETE FROM abilities WHERE id='{$id}';";
+                $dbf->queryarray($queryArray);
+                $parseheader="location:index.php?action=editpersonnel&personnel={$personnel}";
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+
+            case "Change":
+              if($this->checkposint($_POST['personnel']) && $this->checkposint($_POST['ID']))
+              {
+                $personnel=$this->strip($_POST['personnel']);
+                $id=$this->strip($_POST['ID']);
+                $notes=$this->strip($_POST['notes']);
+                $queryArray[sizeof($queryArray)] = "UPDATE abilities SET notes='{$notes}' WHERE id='{$id}';";
+                $dbf->queryarray($queryArray);
+                $parseheader="location:index.php?action=editpersonnel&personnel={$personnel}";
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+            case "Add":
+              if($this->checkposint($_POST['personnel']) && $this->checkposint($_POST['abilitytype']))
+              {
+                $personnel=$this->strip($_POST['personnel']);
+                $abilitytype=$this->strip($_POST['abilitytype']);
+                $notes=$this->strip($_POST['notes']);
+                $queryArray[sizeof($queryArray)] = "INSERT INTO abilities (person, ability, notes) VALUES ('{$personnel}', '{$abilitytype}', '{$notes}');";
+                $dbf->queryarray($queryArray);
+                $parseheader="location:index.php?action=editpersonnel&personnel={$personnel}";
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+          }
+          break;
       }
       return $parseheader;
     }

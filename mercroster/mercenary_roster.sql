@@ -928,6 +928,19 @@ INSERT INTO `mercroster`.`skills` VALUES  (1,1,1,2),
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `skills` ENABLE KEYS */;
 
+--
+-- Definition of table `mercroster`.`abilities`
+--
+
+DROP TABLE IF EXISTS `mercroster`.`abilities`;
+CREATE TABLE  `mercroster`.`abilities` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `person` int(11) NOT NULL,
+  `ability` int(11) NOT NULL,
+  `notes` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=342 DEFAULT CHARSET=latin1;
+
 
 --
 -- Definition of table `mercroster`.`skilltypes`
@@ -962,6 +975,48 @@ INSERT INTO `mercroster`.`skilltypes` VALUES  (1,'Piloting/Mech','Piloting'),
  (13,'Special Operations','Specops');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `skilltypes` ENABLE KEYS */;
+
+--
+-- Definition of table `mercroster`.`abilitytypes`
+--
+
+DROP TABLE IF EXISTS `mercroster`.`abilitytypes`;
+CREATE TABLE  `mercroster`.`abilitytypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mercroster`.`abilitytypes`
+--
+
+/*!40000 ALTER TABLE `abilitytypes` DISABLE KEYS */;
+LOCK TABLES `abilitytypes` WRITE;
+INSERT INTO `mercroster`.`abilitytypes` VALUES  (1,'Blood Stalker'),
+ (2,'Fist Fire'),
+ (3,'Marksman'),
+ (4,'Multi-Tasker'),
+ (5,'Oblique Attacker'),
+ (6,'Range Master'),
+ (7,'Sharpshooter'),
+ (8,'Sniper'),
+ (8,'Weapon Specialist'),
+ (10,'Dodge'),
+ (11,'Hot Dog'),
+ (12,'Heavy Lifter'),
+ (13,'Jumping Jack'),
+ (14,'Maneuvering Ace'),
+ (15,'Melee Master'),
+ (16,'Melee Specialist'),
+ (17,'Natural Grace'),
+ (18,'Speed Demon'),
+ (19,'Combat Intuition'),
+ (20,'Demoralizer'),
+ (21,'Tactical Genius'),
+ (22,'Edge');
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `abilitytypes` ENABLE KEYS */;
 
 
 --

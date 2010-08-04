@@ -40,6 +40,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";
       break;
     case "3":
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=1'>Equipment types</a></li>\n";
@@ -48,6 +49,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";
       break;
     case "4":
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=1'>Equipment types</a></li>\n";
@@ -56,6 +58,7 @@ else
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";      
       break;
     case "5":
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=1'>Equipment types</a></li>\n";
@@ -64,6 +67,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";
       break;
     case "6":
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=1'>Equipment types</a></li>\n";
@@ -72,6 +76,16 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";      
+      break;
+   case "7":
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=1'>Equipment types</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=2'>Skills & Traits</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=3'>Personnel types</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li id='selected'><a class='generictableedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";     
       break;
     default:
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=toe&amp;page=1'>Equipment types</a></li>\n";
@@ -80,6 +94,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=4'>Unit types</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=5'>Unit levels</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=6'>Personnel ranks</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=toe&amp;page=7'>Special Abilities</a></li>\n";
       break;
   }
   echo "</ul>\n";
@@ -891,6 +906,103 @@ else
 	<?php
 	echo "</div>";
 	break;
+	
+	case "7":
+      //Fetching Ability data
+      $abilityTypeResult=$dbf->queryselect("SELECT id, name FROM abilitytypes ORDER BY name ASC;");
+
+      $usedAbilityTypeResult=$dbf->queryselect("SELECT DISTINCT ability FROM abilities;");
+      $usedAbilityTypeArray=$dbf->resulttoarraysingle($usedAbilityTypeResult);
+
+      echo"<div class='typecontainer' style='overflow: auto;'>\n";
+      echo"<div id='typelist' class='typelist'>\n";
+      echo "<ul>\n";
+      if(!isset($_GET['sub']))
+      {
+        echo "<li class='selectedtype'><a class='selectedtype' href='index.php?action=toe&amp;page=7'>New Ability</a></li>\n";
+      }
+      else
+      {
+        echo "<li><a class='notselectedtype' href='index.php?action=toe&amp;page=7'>New Ability</a></li>\n";
+      }
+      while ($abilityArray=mysql_fetch_array($abilityTypeResult, MYSQL_ASSOC))
+      {
+        if($_GET['sub']==$abilityArray[id])
+        {
+          echo "<li class='selectedtype'><a class='selectedtype' href='index.php?action=toe&amp;page=7&amp;sub={$abilityArray[id]}'>{$abilityArray[name]}</a></li>\n";
+        }
+        else
+        {
+          echo "<li><a class='notselectedtype' href='index.php?action=toe&amp;page=7&amp;sub={$abilityArray[id]}'>{$abilityArray[name]}</a></li>\n";
+        }
+      }
+      echo "</ul>\n";
+      echo"</div>\n";
+
+      if(isset($_GET['sub']))
+      {
+        $sub=strip($_GET['sub']);
+        $abilityTypesResult=$dbf->queryselect("SELECT * FROM abilitytypes WHERE ID='{$sub}';");
+        $abilityTypesArray=mysql_fetch_array($abilityTypesResult, MYSQL_ASSOC);
+
+        echo"<div id='typeeditarea' class='typeeditarea'>\n";
+
+        if(isset($_GET['err']))
+        {
+          echo"<tr>\n";
+          echo"<td colspan='8'><b>No changes was made because {$_GET['err']} was given.</b></td>\n";
+          echo"</tr>\n";
+        }
+
+        echo"<form action='index.php?action=setupquery' method='post'>\n";
+        echo"<table border='0'>\n";
+        echo"<tr>\n";
+        echo"<th class='toelong'>Name</th>\n";
+        echo"<td><input class='toelong' name='name' type='text' maxlength='60' value='{$abilityTypesArray[name]}' /></td>\n";
+        echo"</tr>\n";
+        echo"<tr>\n";
+        echo "<td colspan='2'><input type='hidden' name='ID' value='{$abilityTypesArray[id]}' />\n";
+        echo "<input type='hidden' name='QueryType' value='AbilityType' />\n";
+        echo "<input class='toebutton' name='QueryAction' type='submit' value='Change' />\n";
+        //Delete not used ability types
+        if (is_null($usedAbilityTypeArray) || !in_array($abilityTypesArray[id], $usedAbilityTypeArray))
+        {
+          echo "<input class='toebutton' name='QueryAction' type='submit' value='Delete' onclick='return confirmSubmit(\"Delete\")' />\n";
+        }
+        else
+        {
+          echo "<input class='toebutton' name='QueryAction' type='submit' value='Delete' disabled='disabled' />\n";
+        }
+        echo "</td>\n";
+        echo"</tr>\n";
+        echo"</table>\n";
+        echo"</form>\n";
+        echo"</div>\n";
+      }
+      else
+      {
+        echo"<div id='typeeditarea' class='typeeditarea'>\n";
+        echo "<form action='index.php?action=setupquery' method='post'>\n";
+        echo "<table border='0'>\n";
+        echo "<tr>\n";
+        echo"<th class='toelong'>Name</th>\n";
+        echo"<td><input class='toelong' name='name' type='text' maxlength='60' value='' /></td>\n";
+        echo"</tr>\n";
+        echo "<tr>\n";
+        echo "<td colspan='2'>\n";
+        echo "<input type='hidden' name='ID' value='0' /> \n";
+        echo "<input type='hidden' name='QueryType' value='AbilityType' /> \n";
+        echo "<input class='toebutton' name='QueryAction' type='submit' value='Add' /></td>\n";
+        echo "</tr>\n";
+        echo "</table>\n";
+        echo "</form>\n";
+        echo"</div>\n";
+      }
+      echo"</div>\n";
+      echo "</div>\n";
+      break;
+	
+	
 default:
 
   //Fetching Equipment data
