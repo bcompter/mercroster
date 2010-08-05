@@ -9,7 +9,9 @@ $parent=$_GET["unit"];
 $parent = stripslashes($parent);
 $parent = mysql_real_escape_string($parent);
 
-
+require("includes/GlobalFunctions.php");
+$gblf = new GlobalFunctions;
+	
 function calculateRank($gunnery, $piloting)
 {
   $ratingc = $gunnery + $piloting;
@@ -113,7 +115,7 @@ function getCrews($ID, $crewsArray)
   return $returnArray;
 }
 
-function generateorganizationchart($recursionArray, $unitArray, $crewsArray, $upperid)
+function generateorganizationchart($recursionArray, $unitArray, $crewsArray, $upperid, $dbf, $gblf)
 {
   $uCount=sizeof($recursionArray)-1; //because uppermost level is page itself
   $uID=$recursionArray[0]; //this unit id
@@ -144,15 +146,16 @@ function generateorganizationchart($recursionArray, $unitArray, $crewsArray, $up
     echo "</table></td>\n";
 
     echo "<td>\n";
-    parseunittables($recursionArray[$i], $unitArray, $crewsArray, $upperid); //recursive call to genarate next level of units under uppermost unit
+    parseunittables($recursionArray[$i], $unitArray, $crewsArray, $upperid, $dbf, $gblf); //recursive call to genarate next level of units under uppermost unit
     echo "</td>\n";
     echo "</tr>\n";
   }
   echo "</table>\n";
 }
 
-function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid)
+function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid, $dbf, $gblf)
 {
+	
   $uCount = sizeof($recursionArray)-1; //because uppermost level is page itself
   $uID = $recursionArray[0]; //this unit id
   $unit = getUnit($uID, $unitArray); //find unit from unit array
@@ -273,7 +276,7 @@ function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid)
       echo "</table></td>\n";
 
       echo "<td>\n";
-      parseunittables($recursionArray[$i], $unitArray, $crewsArray, $upperid); //recursive call to make inner unit tables
+      parseunittables($recursionArray[$i], $unitArray, $crewsArray, $upperid, $dbf, $gblf); //recursive call to make inner unit tables
       echo "</td>\n";
       echo "</tr>\n";
     }
@@ -375,14 +378,16 @@ function parseunittables($recursionArray, $unitArray, $crewsArray, $upperid)
       {
         $rating=calculateInfantryRank($crew[Piloting]);
       }
-       
+     
+      $ename = $gblf->displayEquipmentName($crew[subtype], $crew[vname], $dbf);
+      
       echo "<tr>\n";     
       echo "<td class='experiancetd'>{$rating}</td>\n";
       echo "<td class='calltd'>{$crew[callsign]}</td>\n";
       echo "<td class='ranktd'>{$crew[rankname]}</td>\n";
       echo "<td class='nametd'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$crew[pid]}'>{$crew[fname]} {$crew[lname]}</a></td>\n";    
       echo "<td class='ranktd'>{$crew[Gunnery]} / {$crew[Piloting]}</td>\n";
-      echo "<td class='vehicletd'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$crew[uid]}'>{$crew[subtype]} {$crew[vname]}</a></td>\n";
+      echo "<td class='vehicletd'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$crew[uid]}'>{$ename}</a></td>\n";
 
       echo "</tr>\n";
     }
@@ -632,7 +637,7 @@ echo "</tr>\n";
 echo "</table>\n";
 if(sizeof($recArray)>1)
 {
-  generateorganizationchart($recArray, $organizationArray, $crewsArray, $parent);
+  generateorganizationchart($recArray, $organizationArray, $crewsArray, $parent, $dbf, $gblf);
 }
 echo "</div>\n";
 ?>

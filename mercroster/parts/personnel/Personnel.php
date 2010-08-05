@@ -9,6 +9,9 @@ if(!defined('F3xVH894Vdsv'))
 require("includes/BBFunctions.php");
 $bbf = new BBFunctions;
 
+require("includes/GlobalFunctions.php");
+$gblf = new GlobalFunctions;
+
 require("htdocs/dbsetup.php");
 $personnelID = $_GET['personnel'];
 $personnelID = stripslashes($personnelID);
@@ -156,13 +159,14 @@ if(mysql_num_rows($personnelResult)==1)
   //Equipment
   echo "<tr>\n";
   echo "<td class='generictablecell15'><b>Equipment:</b></td>\n";
-  if($action!="notable")
+  $ename = $gblf->displayEquipmentName($personnelArray[subtype], $personnelArray[equipmentname], $dbf);
+  if($action!="notable") 
   {
-   	echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$personnelArray[equipmentid]}'>{$personnelArray[subtype]} {$personnelArray[equipmentname]}</a></td>\n";
+   	echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$personnelArray[equipmentid]}'>{$ename}</a></td>\n";
   }
   else
   {
-    echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=readout&amp;equipment={$personnelArray[equipmentid]}'>{$personnelArray[subtype]} {$personnelArray[equipmentname]}</a></td>\n";
+    echo "<td class='generictablecell85' colspan='2'><a class='personnellink' href='index.php?action=readout&amp;equipment={$personnelArray[equipmentid]}'>{$ename}</a></td>\n";
   }
   echo "</tr>\n";
   //Squad

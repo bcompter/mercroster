@@ -9,6 +9,9 @@ if(!defined('d5Uy76hG54'))
 require("includes/BBFunctions.php");
 $bbf=new BBFunctions;
 
+require("includes/GlobalFunctions.php");
+$gblf = new GlobalFunctions;
+
 require("htdocs/dbsetup.php");
 $first=$_GET['first'];
 $first=stripslashes($first);
@@ -86,7 +89,8 @@ if(isset($_GET["type"]))
       {
         echo "<tr>\n";
         echo "<td class='rostertable'><a class='rostertable' href='index.php?action=equipment&amp;equipment={$array[0]}'>{$array[6]}</a></td>\n";//number
-        echo "<td class='rostertable'>{$array[3]} {$array[2]}\n";//Type
+        $ename = $gblf->displayEquipmentName($array[3], $array[2], $dbf);
+        echo "<td class='rostertable'>{$ename}\n";//Type
         if($array[7]!="")
         {
           echo "<img style='margin-top:2px; margin-right:2px; float:right;' src='./images/small/notes.png' alt='notes' />";

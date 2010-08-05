@@ -14,3 +14,4 @@ Version 0.7.6
 + Added ranks, callsigns, and equipment (plus links) to Unit.php
 + 'readout' action to display equipment on front page
 + Global Options tab in Admin
++ Global Option to reverse name and model ordering (e.g. GRF-6S Griffin vs. Griffin GRF-6S)

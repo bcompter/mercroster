@@ -8,6 +8,9 @@ if(!defined('j6Fr4F7k0cs8'))
 require("includes/BBFunctions.php");
 $bbf = new BBFunctions;
 
+require("includes/GlobalFunctions.php");
+$gblf = new GlobalFunctions;
+
 require("htdocs/dbsetup.php");
 $unitid=$_GET['unit'];
 $unitid=stripslashes($unitid);
@@ -100,15 +103,16 @@ if(mysql_num_rows($unitResult)==1)
     	$name = $name." \"".$temp[callsign]."\"";	
     }
     $name = $name." ".$temp[lname];
+    $ename = $gblf->displayEquipmentName($temp[subtype], $temp[name], $dbf);
     if($action!="units")
     {
       echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=personnel&amp;personnel={$temp[id]}'>{$name}</a></td>\n";
-      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$temp[vid]}'>{$temp[subtype]} {$temp[name]}</a></td>\n";
+      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=equipment&amp;equipment={$temp[vid]}'>{$ename}</a></td>\n";
     }
     else
     {
       echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=notable&amp;personnel={$temp[id]}'>{$name}</a></td>\n";
-      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=readout&amp;equipment={$temp[vid]}'>{$temp[subtype]} {$temp[name]}</a></td>\n";
+      echo"<td class='unittablecell'><a class='personnellink' href='index.php?action=readout&amp;equipment={$temp[vid]}'>{$ename}</a></td>\n";
     }
     echo "</tr>\n";
   }

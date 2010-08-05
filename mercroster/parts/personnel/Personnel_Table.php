@@ -9,6 +9,9 @@ if(!defined('T56ujjd3n73FG'))
 require("includes/BBFunctions.php");
 $bbf = new BBFunctions;
 
+require("includes/GlobalFunctions.php");
+$gblf = new GlobalFunctions;
+
 /**
  * Function used to calculate persons age from their birgthday
  * @param $BDay
@@ -335,7 +338,8 @@ if(isset($_GET["type"]))
       echo "<td class='rostertable'>{$Age}</td>\n";
       if($equippable && $personnelStatus!="out")//only for those who have capasity to be assigned to vehicle
       {
-        echo "<td class='rostertable'>{$array[subtype]} {$array[vname]}</td>\n";
+        $ename = $gblf->displayEquipmentName($array[subtype], $array[vname], $dbf);
+      	echo "<td class='rostertable'>{$ename}</td>\n";
       }
       if($personnelStatus!="out")
       {

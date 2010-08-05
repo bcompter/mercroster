@@ -11,6 +11,9 @@ $crewID=$_GET['personnel'];
 $crewID=stripslashes($crewID);
 $crewID=mysql_real_escape_string($crewID);
 
+require("includes/GlobalFunctions.php");
+$gblf = new GlobalFunctions;
+
 require("includes/InputFields.php");
 $inputFields = new InputFields;
 
@@ -228,14 +231,16 @@ if(isset($_SESSION['SESS_NAME']) && $_SESSION['SESS_TYPE']<'5')
     echo "<option value='0'>No Equipment</option>\n";
     while($vehicleArray=mysql_fetch_array($vehicleResult, MYSQL_NUM))
     {
-      echo "<option value='{$vehicleArray[0]}' selected='selected'>{$vehicleArray[2]} {$vehicleArray[1]}</option>\n";
+      $ename = $gblf->displayEquipmentName($vehicleArray[2], $vehicleArray[1], $dbf);
+      echo "<option value='{$vehicleArray[0]}' selected='selected'>{$ename}</option>\n";
       $lastVehicleID=$vehicleArray[0];
     }
     while($availableVehicleArray = mysql_fetch_array($availableVehicleResult, MYSQL_NUM))
     {
       if(in_array($availableVehicleArray[4], $usedPositionsIDArray))
       {
-        echo "<option value='{$availableVehicleArray[0]}'>{$availableVehicleArray[2]} {$availableVehicleArray[1]}</option>\n";
+      	$ename = $gblf->displayEquipmentName($availableVehicleArray[2], $availableVehicleArray[1], $dbf);
+        echo "<option value='{$availableVehicleArray[0]}'>{$ename}</option>\n";
       }
     }
     echo "</select>\n";
