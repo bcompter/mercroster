@@ -13,3 +13,4 @@ Version 0.7.6
 + Special Abilities
 + Added ranks, callsigns, and equipment (plus links) to Unit.php
 + 'readout' action to display equipment on front page
++ Global Options tab in Admin

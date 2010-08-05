@@ -365,6 +365,26 @@ LOCK TABLES `kills` WRITE;
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `kills` ENABLE KEYS */;
 
+--
+-- Definition of table `mercroster`.`options`
+--
+DROP TABLE IF EXISTS `mercroster`.`options`;
+CREATE TABLE  `mercroster`.`options` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `value` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mercroster`.`options`
+--
+/*!40000 ALTER TABLE `options` DISABLE KEYS */;
+LOCK TABLES `options` WRITE;
+INSERT INTO `mercroster`.`options` VALUES  (1,'Subtype Last',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `options` ENABLE KEYS */;
+
 
 --
 -- Definition of table `mercroster`.`lastlog`

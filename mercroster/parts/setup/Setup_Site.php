@@ -36,6 +36,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=3'>Image Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=4'>PDF Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=5&amp;first=0'>Guest Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=6'>Global Options</a></li>\n";
       break;
     case "3":
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=1'>Board types</a></li>\n";
@@ -43,6 +44,7 @@ else
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=site&amp;page=3'>Image Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=4'>PDF Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=5&amp;first=0'>Guest Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=6'>Global Options</a></li>\n";
       break;
     case "4":
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=1'>Board types</a></li>\n";
@@ -50,6 +52,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=3'>Image Log</a></li>\n";
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=site&amp;page=4'>PDF Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=5&amp;first=0'>Guest Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=6'>Global Options</a></li>\n";
       break;
     case "5":
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=1'>Board types</a></li>\n";
@@ -57,6 +60,15 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=3'>Image Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=4'>PDF Log</a></li>\n";
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=site&amp;page=5&amp;first=0'>Guest Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=6'>Global Options</a></li>\n";
+      break;
+    case "6":
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=1'>Board types</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=2'>Failed Login Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=3'>Image Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=4'>PDF Log</a></li>\n";
+      echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=5&amp;first=0'>Guest Log</a></li>\n";
+      echo "<li id='selected'><a class='generictablenonedit' href='index.php?action=site&amp;page=6'>Global Options</a></li>\n";
       break;
     default:
       echo "<li id='selected'><a class='generictableedit' href='index.php?action=site&amp;page=1'>Board types</a></li>\n";
@@ -64,6 +76,7 @@ else
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=3'>Image Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=4'>PDF Log</a></li>\n";
       echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=5&amp;first=0'>Guest Log</a></li>\n";
+	  echo "<li><a class='generictablenonedit' href='index.php?action=site&amp;page=6'>Global Options</a></li>\n";
       break;
   }
   echo "</ul>\n";
@@ -258,6 +271,38 @@ else
       echo "</div>\n";
       break;
 
+      //Global Options
+    case "6":
+   	  echo "<div class='genericarea'>\n";
+      echo "<h1 class='headercenter'>Global Options</h1>\n";
+      $optionResult = $dbf->queryselect("SELECT id, name, value FROM options;");
+      
+  	  echo"<form action='index.php?action=setupsitequery' method='post'>\n";
+      echo"<table border='0'>\n";
+      while($optionArray=mysql_fetch_array($optionResult, MYSQL_NUM)) {
+      	echo"<tr>";
+      	echo "<th class='setuptablebox'>{$optionArray[1]}</th>\n";
+      	if ($optionArray[2]==1)
+      	{
+          echo "<td><input class='setuptablecheck' name='{$optionArray[0]}' type='checkbox' checked='checked' /></td>\n";
+        }
+        else
+        {
+          echo "<td><input class='setuptablecheck' name='{$optionArray[0]}' type='checkbox' /></td>\n";
+        }
+        echo "</tr>";
+      }
+      echo"<tr>\n";
+      echo "<td>\n";
+      echo "<input type='hidden' name='QueryType' value='options' />\n";
+      echo "<input class='setuptablebutton' name='QueryAction' type='submit' value='Change' />\n";
+      echo "</td>\n";
+      echo "</tr>\n";
+      echo "</table>";
+      echo "</form>";
+      echo "</div>\n";
+      break;
+     
       /*************
        * Log Types *
        *************/
@@ -436,7 +481,7 @@ else
         }
         echo "</td>\n";
         echo "</tr>\n";
-
+		
         echo "</table>\n";
         echo "</form>\n";
 

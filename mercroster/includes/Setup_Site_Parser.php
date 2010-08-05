@@ -233,6 +233,29 @@ class Setupsiteparser extends Parser
             $parseheader="location:index.php?action=incorrectargument";
           }
           break;
+          
+        case "options":
+          switch ($_POST['QueryAction'])
+          {
+            case "Change":
+            	$optionResult = $dbf->queryselect("SELECT id, name, value FROM options;");
+            	while($optionArray=mysql_fetch_array($optionResult, MYSQL_NUM)) {
+            		$value = $this->strip($_POST["{$optionArray[0]}"]);
+            		if($value=="on")
+                    {
+                       $value=1;
+                    }
+                    else
+                    {
+                       $value=0;
+                    }
+            		$queryArray[sizeof($queryArray)]="UPDATE options SET value='{$value}' WHERE id='{$optionArray[0]}';";
+            	}
+            	$dbf->queryarray($queryArray);
+            	$parseheader="location:index.php?action=site&page=6";
+            break;
+          }
+          break;       
       }
     }
     else

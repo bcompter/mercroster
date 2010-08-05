@@ -59,3 +59,23 @@ INSERT INTO `abilitytypes` VALUES  (1,'Blood Stalker'),
  (22,'Edge');
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `abilitytypes` ENABLE KEYS */;
+
+--
+-- Definition of table `options`
+--
+DROP TABLE IF EXISTS `options`;
+CREATE TABLE  `options` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(60) NOT NULL,
+  `value` int(10) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `options`
+--
+/*!40000 ALTER TABLE `options` DISABLE KEYS */;
+LOCK TABLES `options` WRITE;
+INSERT INTO `options` VALUES  (1,'Subtype Last',0);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `options` ENABLE KEYS */;
