@@ -1,7 +1,7 @@
 <?
 $dbhost = 'localhost:3306';
-$dbuser = 'root';
-$dbpass = '';
+$dbuser = 'INSERT_USER';
+$dbpass = 'INSERT_PASSWORD';
 
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 if(! $conn )
