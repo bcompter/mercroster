@@ -8,6 +8,9 @@ INSTALLATION
 	
 Navigate to the index.php with a web browser and you should see the website. 
 
+You can log in as 'administrator' with password 'abc123'. It is highly recommended
+that you change this password immediately.
+
 Troubleshooting
 	- Make sure read and execute permissions are enabled for everyone on all php files.
 	
