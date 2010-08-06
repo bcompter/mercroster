@@ -133,7 +133,7 @@ class Personnelparser extends Parser
 
               if($errMSG=="")
               {
-                $queryArray[sizeof($queryArray)] = "INSERT INTO crew (rank, lname, fname, callsign, status, crewnumber, joiningdate, notes, bday, notable, image) VALUES ('{$rank}', '{$lname}', '{$fname}', '{$status}', '{$crewnumber}', '{$joiningdate}', '{$notes}', '{$birthdate}', '{$notable}', '{$image}');";
+                $queryArray[sizeof($queryArray)] = "INSERT INTO crew (rank, lname, fname, callsign, status, crewnumber, joiningdate, notes, bday, notable, image) VALUES ('{$rank}', '{$lname}', '{$fname}', '{$callsign}', '{$status}', '{$crewnumber}', '{$joiningdate}', '{$notes}', '{$birthdate}', '{$notable}', '{$image}');";
                 $dbf->queryarray($queryArray);
                 $parseheader="location:index.php?action=personneltable&first=0";
               }

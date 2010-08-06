@@ -90,7 +90,7 @@ class Equipmentparser extends Parser
           }
           if($errMSG=="")
           {
-            $queryArray[sizeof($queryArray)]="INSERT INTO equipment (type, name, subtype, weight, regnumber, notes, troid, image) VALUES ('{$type}', '{$name}', '{$subtype}', '{$weight}', '{$regnumber}', '{$notes}', '{$troid}', {$image}');";
+            $queryArray[sizeof($queryArray)]="INSERT INTO equipment (type, name, subtype, weight, regnumber, notes, troid, image) VALUES ('{$type}', '{$name}', '{$subtype}', '{$weight}', '{$regnumber}', '{$notes}', '{$troid}', '{$image}');";
             $dbf->queryarray($queryArray);
             $parseheader="location:index.php?action=equipmenttable&type={$type}&order=1&first=0";
           }
