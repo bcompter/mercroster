@@ -8,6 +8,8 @@
 
 	<property name="htdocs" value="htdocs" />
 	<property name="imagedir" value="images" />
+	<property name="logdir" value="logs" />
+	<property name="sheetdir" value="controlsheets" />
 	<property name="svndir" value="svndev" />
 	<property name="project.name" value="mercroster" />
 	<property name="version" value="0.7.6" />
@@ -51,6 +53,8 @@
 				<exclude name="mercenary_roster.sql" />
 				<exclude name="${htdocs}/" />
 				<exclude name="${imagedir}/" />
+				<exclude name="${logdir}/" />
+				<exclude name="${sheetdir}/" />
 				<exclude name=".*" />
 				<exclude name="build.xml" />
 			</fileset>
