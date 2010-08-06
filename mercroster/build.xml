@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- This is an ant build file. See: "http://jakarta.apache.org/ant" -->
+<!-- To see userlevel commands and their descpription type 'ant -projecthelp' -->
+<!-- from a command prompt where this file is located -->
+
+<project default="release" name="MegaMek" basedir=".">
+	<!-- Global properties for this build -->
+
+	<property name="htdocs" value="htdocs" />
+	<property name="imagedir" value="images" />
+	<property name="svndir" value="svndev" />
+
+	<!-- svnroot used for svn authentification -->
+	<property name="svnroot" value="https://mercroster.svn.sourceforge.net/svnroot/mercroster/" />
+
+	<target name="clean" description="Remove all compiled and generated files">
+		<!-- Delete the ${svn} directory tree -->
+		<delete dir="${svndir}" />
+	</target>
+
+	<target name="init">
+		<tstamp />
+		<delete dir="${svndir}" />
+	</target>
+
+	<!-- following svndev-* tasks get, build & package the current version from svn -->
+	<target name="get" depends="init">
+		<exec executable="svn">
+			<arg line="export ${svnroot} ${svndir}" />
+		</exec>
+	</target>
+
+	<target name="package" depends="get">
+		<!-- zip file generation from svn sources -->
+		<!-- keep in mind that directory references for 'excludes' are -->
+		<!-- relative to the zip-tasks basedir but 'zipfile' uses the -->
+		<!-- absolute (project) ${basedir} -->
+		<zip zipfile="${basedir}/mercroster-${DSTAMP}.zip" basedir="${svndir}" />
+		<zip zipfile="${basedir}/mercroster-upgrade-${DSTAMP}.zip" basedir="${svndir}" excludes="${htdocs}/ ${imagedir}/" />
+	</target>
+
+	<target name="release" depends="init, get, package, clean" />
+
+</project>

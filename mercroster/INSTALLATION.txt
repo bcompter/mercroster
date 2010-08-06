@@ -1,4 +1,4 @@
-Installation Instructions
+INSTALLATION
 
 1) Place files in your web directory
 2) Add the mercroster table to your MySQL with the "mercenary_roster.sql" source file
@@ -10,3 +10,8 @@ Navigate to the index.php with a web browser and you should see the website.
 
 Troubleshooting
 	- Make sure read and execute permissions are enabled for everyone on all php files.
+	
+UPGRADING
+1) Back up your website and database
+2) run the update_roster.sql on your mercroster table in MySQL
+3) Overwrite the files in your website directory with the new files
