@@ -8,5 +8,5 @@ if(! $conn )
 {
   die('Could not connect: ' . mysql_error());
 }
-mysql_select_db( 'flaming_devil_monkeys' );
+mysql_select_db( 'mercroster' );
 ?>
