@@ -15,3 +15,4 @@ Version 0.7.6
 + 'readout' action to display equipment on front page
 + Global Options tab in Admin
 + Global Option to reverse name and model ordering (e.g. GRF-6S Griffin vs. Griffin GRF-6S)
++ updated build.xml

@@ -9,6 +9,8 @@
 	<property name="htdocs" value="htdocs" />
 	<property name="imagedir" value="images" />
 	<property name="svndir" value="svndev" />
+	<property name="project.name" value="mercroster" />
+	<property name="version" value="0.7.6" />
 
 	<!-- svnroot used for svn authentification -->
 	<property name="svnroot" value="https://mercroster.svn.sourceforge.net/svnroot/mercroster/" />
@@ -16,11 +18,17 @@
 	<target name="clean" description="Remove all compiled and generated files">
 		<!-- Delete the ${svn} directory tree -->
 		<delete dir="${svndir}" />
+		<delete dir="${releasedir}" />
+		<delete dir="${upgradedir}" />
 	</target>
 
 	<target name="init">
 		<tstamp />
 		<delete dir="${svndir}" />
+		<property name="releasedir" value="${project.name}-${version}" />
+		<property name="upgradedir" value="${project.name}-${version}-update" />
+		<mkdir dir="${releasedir}" />
+		<mkdir dir="${upgradedir}" />
 	</target>
 
 	<!-- following svndev-* tasks get, build & package the current version from svn -->
@@ -31,12 +39,28 @@
 	</target>
 
 	<target name="package" depends="get">
+		<copy todir="${releasedir}">
+			<fileset dir="${svndir}/mercroster" >
+				<exclude name="update_roster.sql" />
+				<exclude name=".*" />
+				<exclude name="build.xml" />
+			</fileset>
+		</copy>	
+		<copy todir="${upgradedir}">
+			<fileset dir="${svndir}/mercroster" >
+				<exclude name="mercenary_roster.sql" />
+				<exclude name="${htdocs}/" />
+				<exclude name="${imagedir}/" />
+				<exclude name=".*" />
+				<exclude name="build.xml" />
+			</fileset>
+		</copy>	
 		<!-- zip file generation from svn sources -->
 		<!-- keep in mind that directory references for 'excludes' are -->
 		<!-- relative to the zip-tasks basedir but 'zipfile' uses the -->
 		<!-- absolute (project) ${basedir} -->
-		<zip zipfile="${basedir}/mercroster-${DSTAMP}.zip" basedir="${svndir}" />
-		<zip zipfile="${basedir}/mercroster-upgrade-${DSTAMP}.zip" basedir="${svndir}" excludes="${htdocs}/ ${imagedir}/" />
+		<zip zipfile="${basedir}/mercroster-${version}.zip" basedir="${releasedir}" />
+		<zip zipfile="${basedir}/mercroster-${version}-update.zip" basedir="${upgradedir}" />
 	</target>
 
 	<target name="release" depends="init, get, package, clean" />
