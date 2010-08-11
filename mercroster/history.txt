@@ -1,5 +1,8 @@
 Version 0.7.8
 --------------------------
++ Fix Feed_Generator.php
++ Deleted unused images
++ Deleted unused Setup_TOE.php in /parts/ directory
 
 Version 0.7.7
 --------------------------
