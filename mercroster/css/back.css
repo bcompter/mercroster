@@ -19,7 +19,7 @@ body {
 	margin: auto;
 	height: 100px;
 	background-color: #530f0f;
-	background-image: url(../images/topic.png);
+	/*background-image: url(../images/topic.png);*/
 	background-repeat: no-repeat;
 	background-position: top left;
 }

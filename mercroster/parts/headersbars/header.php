@@ -65,7 +65,7 @@ function change_unitlevel_image(val)
 }
 echo "</head>\n";
 echo "<body>\n";
-echo "<div id='header'>\n";
+echo "<div id='header' style='background-image: url(images/commandheaders/{$commandHeader})'>\n";
 //Front's Header bar
 if($headerbar=="front")
 {
@@ -73,9 +73,6 @@ if($headerbar=="front")
   echo "<div class='links' id='links'>\n";
   echo "<ul>\n";
   echo "<li><a href='index.php?action=main'>Home</a></li>\n";
-  //echo "<li><a href='index.php?action=information'>About {$commandAbb}</a></li>\n";
-  //echo "<li><a href='index.php?action=services'>Services</a></li>\n";
-  //echo "<li><a href='index.php?action=contact'>Hire us</a></li>\n";
   echo "<li><a href='index.php?action=status'>Tables</a></li>\n";
 }
 //Tables's Header bar

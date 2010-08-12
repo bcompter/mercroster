@@ -33,6 +33,7 @@ CREATE TABLE  `mercroster`.`command` (
   `description` text COLLATE utf8_swedish_ci NOT NULL,
   `motto` varchar(100) COLLATE utf8_swedish_ci NOT NULL DEFAULT 'Motto',
   `image` varchar(100) COLLATE utf8_swedish_ci DEFAULT 'link',
+  `header` varchar(100) COLLATE utf8_swedish_ci DEFAULT 'link',
   `icon` varchar(100) COLLATE utf8_swedish_ci DEFAULT 'link',
   `services` text COLLATE utf8_swedish_ci,
   `contact` text COLLATE utf8_swedish_ci,

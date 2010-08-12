@@ -699,6 +699,7 @@ class Setupparser  extends Parser
             $motto=$this->strip($_POST['motto']);
 
             $image=$this->strip($_POST['image']);
+            $commandheader=$this->strip($_POST['commandheader']);
             $icon=$this->strip($_POST['icon']);
 
             $errMSG="";
@@ -714,13 +715,9 @@ class Setupparser  extends Parser
             {
               $errMSG="no motto";
             }
-            if($image=="")
-            {
-              $errMSG="no image";
-            }
             if($errMSG=="")
             {
-              $queryArray[sizeof($queryArray)]="UPDATE command SET name='{$name}', abbreviation='{$abb}', motto='{$motto}', image='{$image}', icon='{$icon}' WHERE id=1;";
+              $queryArray[sizeof($queryArray)]="UPDATE command SET name='{$name}', abbreviation='{$abb}', motto='{$motto}', image='{$image}', header='{$commandheader}', icon='{$icon}' WHERE id=1;";
               $dbf->queryarray($queryArray);
               $parseheader="location:index.php?action=command&page=1";
             }

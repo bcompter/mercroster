@@ -75,8 +75,9 @@ $currentDate=$currentGameDateArray[2];
 $currentGameDate=$dp->datestring($currentGameDateArray[2]);
 
 //Fetching used dates data
-$commandResult=$dbf->queryselect("SELECT icon, abbreviation FROM command WHERE id=1;");
+$commandResult=$dbf->queryselect("SELECT icon, abbreviation, header FROM command WHERE id=1;");
 $commandArray=mysql_fetch_array($commandResult, MYSQL_NUM);
 $commandIcon=$commandArray[0];
 $commandAbb=$commandArray[1];
+$commandHeader=$commandArray[2];
 ?>
