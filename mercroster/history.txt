@@ -12,6 +12,7 @@ Version 0.7.8
 + no need for news sidebar on blog page
 + Bug: after saving equipment information user is directed to edit equipment view rather than equipment view 
 + Bug: logged in users can't access front
++ logo and motto on left side bar
 
 Version 0.7.7
 --------------------------
