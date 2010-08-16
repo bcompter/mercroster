@@ -64,11 +64,6 @@ if($_GET["action"]=="main" || !isset($_GET["action"]))
 	    echo "</div>\n";
 	    echo "<div class='posttext'>\n";
 	    echo "{$text}\n";
-	    if(isset($logArray[opid]))
-	    {
-	      echo "<br />\n";
-	      echo "<small>Last edit by {$logArray[opid]} on {$editTime}</small>\n";
-	    }
 	    echo "</div>\n";
 	    //footer for original post
 	    echo "<div class='postfooter'>\n";
