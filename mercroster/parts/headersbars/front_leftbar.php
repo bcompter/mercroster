@@ -90,7 +90,7 @@ if($action!="pages" || $pageArray[game]==1) {
 	echo "</div>\n";
 }
 
-if($action!="pages" || $pageArray[news]==1) {
+if(($action!="pages" && $action!="main") || $pageArray[news]==1) {
 	echo "<div class='sidetableheader'>\n";
 	echo "Latest News\n";
 	echo "</div>\n";

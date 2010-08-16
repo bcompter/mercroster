@@ -9,6 +9,7 @@ Version 0.7.8
 + user-defined pages show up on front (still need to define a "home" page for feeds)
 + notable, tro, news, and unit div should move flush to the right of the container
 + first attempt at a blog style front page
++ no need for news sidebar on blog page
 
 Version 0.7.7
 --------------------------
