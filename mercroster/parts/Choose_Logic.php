@@ -481,28 +481,14 @@ switch ($action)
     header($galleryparser->parse());
     break;
 
-    
-    
   default:
-    if(!isset($_SESSION['SESS_ID']) || $_SESSION['SESS_ID']=="")
-    {
       $title="Main";
       $headerbar="front";
       require("parts/headersbars/header.php");
       require("parts/headersbars/front_leftbar.php");
       define('Gyu53Hkl3', TRUE);
       require("parts/front/Front.php");
-    }
-    else
-    {
-      $title="Main";
-      $headerbar="back";
-      require("parts/headersbars/header.php");
-      require("parts/headersbars/back_navbar.php");
-      define('F5gf47gDc', TRUE);
-      require("parts/status/Status.php");
-      break;
-    }
+    
 }
 define('t2sl3ofGKlh', TRUE);
 require("parts/headersbars/footer.php");
