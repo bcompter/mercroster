@@ -10,6 +10,7 @@ Version 0.7.8
 + notable, tro, news, and unit div should move flush to the right of the container
 + first attempt at a blog style front page
 + no need for news sidebar on blog page
++ Bug: after saving equipment information user is directed to edit equipment view rather than equipment view 
 
 Version 0.7.7
 --------------------------

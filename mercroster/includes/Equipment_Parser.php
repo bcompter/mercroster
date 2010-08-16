@@ -56,7 +56,7 @@ class Equipmentparser extends Parser
             {
               $queryArray[sizeof($queryArray)] = "UPDATE equipment SET type='{$type}', name='{$name}', subtype='{$subtype}', weight='{$weight}', regnumber='{$regnumber}', notes='{$notes}', troid='{$troid}', image='{$image}' WHERE id='{$id}';";
               $dbf->queryarray($queryArray);
-              $parseheader="location:index.php?action=editequipment&equipment={$id}";
+              $parseheader="location:index.php?action=equipment&equipment={$id}";
             }
             else
             {
