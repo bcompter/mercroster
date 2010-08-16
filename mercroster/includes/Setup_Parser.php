@@ -5,7 +5,7 @@ class Setupparser  extends Parser
   private function move($type, $id, $prefpos, $direction, $dbf)
   {
     //if we have crewtype placement
-    if($type=="crewtypes" || $type=="equipmenttypes" || $type=="logtypes" || $type=="unitlevel")
+    if($type=="crewtypes" || $type=="equipmenttypes" || $type=="logtypes" || $type=="unitlevel" || $type=="pages")
     {
       if($direction=="Down")
       {
@@ -178,6 +178,21 @@ class Setupparser  extends Parser
               break;
           }
           break;
+          
+        case "pagesmove":
+	        if($this->checkposint($_POST['ID']) && $this->checkposint($_POST['prefpos']))
+	        {
+	          $id=$this->strip($_POST['ID']);
+	          $prefpos=$this->strip($_POST['prefpos']);
+	          $direction=$this->strip($_POST['QueryAction']);
+	          $dbf->queryarray($this->move("pages", $id, $prefpos, $direction, $dbf));
+	          $parseheader="location:index.php?action=command&page=2&sub={$id}";
+	        }
+	        else
+	        {
+	          $parseheader="location:index.php?action=incorrectargument";
+	        }         
+	        break;
 
         case "UnitType":
           switch ($_POST['QueryAction'])
@@ -690,6 +705,159 @@ class Setupparser  extends Parser
           }
           break;
 
+        case "pages":
+          switch ($_POST['QueryAction'])
+          {
+            case "Delete":
+              if($this->checkposint($_POST['ID']) && $this->checkposint($_POST['prefpos']))
+              {
+                $id=$this->strip($_POST['ID']);
+                $prefpos=$this->strip($_POST['prefpos']);
+                $queryArray[sizeof($queryArray)]="DELETE FROM pages WHERE id='{$id}';";
+                $positionresult=$dbf->queryselect("SELECT id, prefpos FROM pages WHERE prefpos>'{$prefpos}';");
+                while($array = mysql_fetch_array($positionresult, MYSQL_NUM))
+                {
+                  $pp = $array[1]-1;
+                  $queryArray[sizeof($queryArray)] = "UPDATE pages SET prefpos='{$pp}' WHERE id='{$array[0]}';";
+                }
+                $dbf->queryarray($queryArray);
+                $parseheader="location:index.php?action=command&page=2";
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+
+            case "Change":
+              if($this->checkposint($_POST['ID']))
+              {
+                $id=$this->strip($_POST['ID']);
+                $name=$this->strip($_POST['name']);
+                $game=$this->strip($_POST['game']);
+                $news=$this->strip($_POST['news']);
+                $units=$this->strip($_POST['units']);
+                $notables=$this->strip($_POST['notables']);
+                $text=$this->strip($_POST['text']);
+                $prefpos=$this->strip($_POST['prefpos']);
+
+                $errMSG="";
+                if($name=="")
+                {
+                  $errMSG="no page name.";
+                }
+                if($errMSG=="")
+                {
+                  if($game=="on")
+                  {
+                    $game=1;
+                  }
+                  else
+                  {
+                    $game=0;
+                  }
+                  if($news=="on")
+                  {
+                    $news=1;
+                  }
+                  else
+                  {
+                    $news=0;
+                  }
+                  if($units=="on")
+                  {
+                    $units=1;
+                  }
+                  else
+                  {
+                    $units=0;
+                  }
+                  if($notables=="on")
+                  {
+                    $notables=1;
+                  }
+                  else
+                  {
+                    $notables=0;
+                  }
+                  $queryArray[sizeof($queryArray)] = "UPDATE pages SET name='{$name}', game='{$game}', news='{$news}', units='{$units}', notables='{$notables}', text='{$text}' WHERE ID='{$id}';";
+                  $dbf->queryarray($queryArray);
+                  $parseheader="location:index.php?action=command&page=2&sub={$id}";
+                }
+                else
+                {
+                  $parseheader="location:index.php?action=command&page=2&err={$errMSG}";
+                }
+              }
+              else
+              {
+                $parseheader="location:index.php?action=incorrectargument";
+              }
+              break;
+
+            case "Add":
+              $name=$this->strip($_POST['name']);
+              $game=$this->strip($_POST['game']);
+              $news=$this->strip($_POST['news']);
+              $units=$this->strip($_POST['units']);
+              $notables=$this->strip($_POST['notables']);
+              $text=$this->strip($_POST['text']);
+          	  $errMSG="";
+                if($name=="")
+                {
+                  $errMSG="no page name.";
+                }
+                if($errMSG=="")
+                {
+                  if($game=="on")
+                  {
+                    $game=1;
+                  }
+                  else
+                  {
+                    $game=0;
+                  }
+                  if($news=="on")
+                  {
+                    $news=1;
+                  }
+                  else
+                  {
+                    $news=0;
+                  }
+                  if($units=="on")
+                  {
+                    $units=1;
+                  }
+                  else
+                  {
+                    $units=0;
+                  }
+                  if($notables=="on")
+                  {
+                    $notables=1;
+                  }
+                  else
+                  {
+                    $notables=0;
+                  }
+                  $rResult=$dbf->queryselect("SELECT COUNT(*) count FROM pages;");
+                  $pagesnumber=mysql_result($rResult, 0)+1;
+                  $nextidResult=$dbf->queryselect("SELECT max(id) FROM pages;");
+                  $temp=mysql_result($nextidResult, 0)+1;
+                  //$temp=$nextidArray[0]+1;
+                  $queryArray[sizeof($queryArray)]="INSERT INTO pages (id, name, game, news, units, notables, text, prefpos) VALUES ('{$temp}', '{$name}', '{$game}', '{$news}', '{$units}', '{$notables}', '{$text}', '{$pagesnumber}');";
+                  $dbf->queryarray($queryArray);
+                  $parseheader="location:index.php?action=command&page=2";
+              	}
+              	else
+              	{
+                	$parseheader="location:index.php?action=command&page=2&err={$errMSG}";
+              	}
+              	break;
+          	}
+          	break;
+          
         case "Command":
           //Command information check
           if($_POST['sub']=="plain")

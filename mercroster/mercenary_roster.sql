@@ -1156,6 +1156,31 @@ INSERT INTO `mercroster`.`unittypes` VALUES  (1,'BattleMechs','#ADD8E6'),
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `unittypes` ENABLE KEYS */;
 
+--
+-- Definition of table `mercroster`.`pages`
+--
+DROP TABLE IF EXISTS `mercroster`.`pages`;
+CREATE TABLE  `mercroster`.`pages` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(100) COLLATE utf8_swedish_ci NOT NULL,
+  `text` text COLLATE utf8_swedish_ci,
+  `game` tinyint(1) NOT NULL,
+  `news` tinyint(1) NOT NULL,
+  `units` tinyint(1) NOT NULL,
+  `notables` tinyint(1) NOT NULL,
+  `prefpos` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mercroster`.`pages`
+--
+/*!40000 ALTER TABLE `pages` DISABLE KEYS */;
+LOCK TABLES `pages` WRITE;
+INSERT INTO `mercroster`.`pages` (id, name, game, news, units, notables, text, prefpos) VALUES(1, 'Main', 1, 1, 1, 1, 1, "It Works!", 1);
+UNLOCK TABLES;
+/*!40000 ALTER TABLE `pages` ENABLE KEYS */;
+
 
 
 

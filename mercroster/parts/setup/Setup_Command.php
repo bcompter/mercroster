@@ -52,66 +52,27 @@ else
 	{
 		case "2":
 			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
+			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=2'>Front Pages</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Dates</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4&amp;sub=1'>Images</a></li>\n";
 			break;
 		case "3":
 			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Front Pages</a></li>\n";
+			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=3'>Dates</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4&amp;sub=1'>Images</a></li>\n";
 			break;
 		case "4":
 			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
-			break;
-		case "5":
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
-			break;
-		case "6":
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
-			break;
-		case "7":
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Front Pages</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Dates</a></li>\n";
+			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=4&amp;sub=1'>Images</a></li>\n";
 			break;
 		default:
 			echo "<li id='selected'><a class='generictableedit' href='index.php?action=command&amp;page=1'>Command Information</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Main Page</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Description</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4'>Services</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=5'>Contact information:</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=6'>Dates</a></li>\n";
-			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=7&amp;sub=1'>Images</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=2'>Front Pages</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=3'>Dates</a></li>\n";
+			echo "<li><a class='generictablenonedit' href='index.php?action=command&amp;page=4&amp;sub=1'>Images</a></li>\n";
 			break;
 	}
 	echo "</ul>\n";
@@ -120,7 +81,7 @@ else
 	switch ($page)
 	{
 		//Dates
-		case "6":
+		case "3":
 			echo "<div class='genericarea'>\n";
 			echo "<form action='index.php?action=setupquery' method='post'>\n";
 			echo "<table class='setupdatetable' border='0'>\n";
@@ -149,7 +110,7 @@ else
 			break;
 
 			//Images
-		case "7":
+		case "4":
 			echo"<div class='typecontainer' style='overflow: auto;'>\n";
 
 			echo"<div id='typelist' class='typelist'>\n";
@@ -345,93 +306,206 @@ else
 			echo "</div>\n";
 			break;
 
-			//Main Page:
+			//Front pages
 		case "2":
-			echo "<div class='genericarea'>\n";
-			echo "<form id='modified' action='index.php?action=setupquery' method='post'>\n";
-			echo "<table class='main' border='0'>\n";
-			if(isset($_GET['err']))
-			{
-				echo "<tr>\n";
-				echo "<td colspan='2'><b>No changes was made because {$_GET['err']} was given.</b></td>\n";
-				echo "</tr>\n";
-			}
-			$inputFields->textarea('edittableleft', 'edittableright', 1, 'Main Page', 'edittablecommon', 'main', $commandArray[main]);
-			echo "<tr>\n";
-			echo "<td colspan='2' class='edittablebottom'><input type='hidden' name='QueryType' value='Command' /> \n";
-			echo "<input type='hidden' name='sub' value='main' /> \n";
-			echo "<input class='edittablebutton' type='submit' value='Save' /></td>\n";
-			echo "</tr>\n";
-			echo "</table>\n";
-			echo "</form>\n";
-			echo "</div>\n";
-			break;
+			//Fetching pages data
+      		$pagesResult=$dbf->queryselect("SELECT id, name FROM pages ORDER BY prefpos ASC;");
+      		$pagesN=mysql_result($dbf->queryselect("SELECT COUNT(*) count FROM pages;"), 0);
 
-			//Description:
-		case "3":
-			echo "<div class='genericarea'>\n";
-			echo "<form id='modified' action='index.php?action=setupquery' method='post'>\n";
-			echo "<table class='main' border='0'>\n";
-			if(isset($_GET['err']))
-			{
-				echo "<tr>\n";
-				echo "<td colspan='2'><b>No changes was made because {$_GET['err']} was given.</b></td>\n";
-				echo "</tr>\n";
-			}
-			$inputFields->textarea("edittableleft", "edittableright", 1, "Description", "edittablecommon", "desc", $commandArray[description]);
-			echo "<tr>\n";
-			echo "<td colspan='2' class='edittablebottom'><input type='hidden' name='QueryType' value='Command' /> \n";
-			echo "<input type='hidden' name='sub' value='desc' /> \n";
-			echo "<input class='edittablebutton' type='submit' value='Save' /></td>\n";
-			echo "</tr>\n";
-			echo "</table>\n";
-			echo "</form>\n";
-			echo "</div>\n";
-			break;
+      		echo"<div class='typecontainer' style='overflow: auto;'>\n";
+      		echo"<div id='typelist' class='typelist'>\n";
+      		echo "<ul>\n";
+      		if(!isset($_GET['sub']))
+      		{
+        		echo "<li class='selectedtype'><a class='selectedtype' href='index.php?action=command&amp;page=2'>New Page</a></li>\n";
+      		}
+      		else
+      		{
+        		echo "<li><a class='notselectedtype' href='index.php?action=command&amp;page=2'>New Page</a></li>\n";
+      		}
+      		while ($pagesArray=mysql_fetch_array($pagesResult, MYSQL_ASSOC))
+      		{
+        		if($_GET['sub']==$pagesArray[id])
+        		{
+          			echo "<li class='selectedtype'><a class='selectedtype' href='index.php?action=command&amp;page=2&amp;sub={$pagesArray[id]}'>{$pagesArray[name]}</a></li>\n";
+        		}
+        		else
+        		{
+          			echo "<li><a class='notselectedtype' href='index.php?action=command&amp;page=2&amp;sub={$pagesArray[id]}'>{$pagesArray[name]}</a></li>\n";
+        		}
+      		}
+      		echo "</ul>\n";
+      		echo"</div>\n";
 
-			//Services:
-		case "4":
-			echo "<div class='genericarea'>\n";
-			echo "<form id='modified' action='index.php?action=setupquery' method='post'>\n";
-			echo "<table class='main' border='0'>\n";
-			if(isset($_GET['err']))
-			{
-				echo "<tr>\n";
-				echo "<td colspan='2'><b>No changes was made because {$_GET['err']} was given.</b></td>\n";
-				echo "</tr>\n";
-			}
-			$inputFields->textarea("edittableleft", "edittableright", 1, "Services", "edittablecommon", "services", $commandArray[services]);
-			echo "<tr>\n";
-			echo "<td colspan='2' class='edittablebottom'><input type='hidden' name='QueryType' value='Command' /> \n";
-			echo "<input type='hidden' name='sub' value='serv' /> \n";
-			echo "<input class='edittablebutton' type='submit' value='Save' /></td>\n";
-			echo "</tr>\n";
-			echo "</table>\n";
-			echo "</form>\n";
-			echo "</div>\n";
-			break;
+      		if(isset($_GET['err']))
+      		{
+        		echo"<b>No changes was made because {$_GET['err']} was given.</b><br />\n";
+      		}
 
-			//Contact information:
-		case "5":
-			echo "<div class='genericarea'>\n";
-			echo "<form id='modified' action='index.php?action=setupquery' method='post'>\n";
-			echo "<table class='main' border='0'>\n";
-			if(isset($_GET['err']))
-			{
-				echo "<tr>\n";
-				echo "<td colspan='2'><b>No changes was made because {$_GET['err']} was given.</b></td>\n";
-				echo "</tr>\n";
-			}
-			$inputFields->textarea("edittableleft", "edittableright", 1, "Contact information", "edittablecommon", "contact", $commandArray[contact]);
-			echo "<tr>\n";
-			echo "<td colspan='2' class='edittablebottom'><input type='hidden' name='QueryType' value='Command' /> \n";
-			echo "<input type='hidden' name='sub' value='cont' /> \n";
-			echo "<input class='edittablebutton' type='submit' value='Save' /></td>\n";
-			echo "</tr>\n";
-			echo "</table>\n";
-			echo "</form>\n";
-			echo "</div>\n";
-			break;
+      		if(isset($_GET['sub']))
+      		{
+        		$sub=strip($_GET['sub']);
+        		$pagesResult=$dbf->queryselect("SELECT * FROM pages WHERE id='{$sub}';");
+        		$pagesArray=mysql_fetch_array($pagesResult, MYSQL_ASSOC);
+
+        		echo"<div id='typeeditarea' class='typeeditarea'>\n";
+        		echo"<form action='index.php?action=setupquery' method='post'>\n";
+        		echo"<table border='0'>\n";
+        		//Type
+        		echo"<tr>\n";
+        		echo "<th class='setuptabletext'>Name</th>\n";
+        		?>
+				<td><input class="setuptabletext" name="name" type="text"
+					maxlength="100" value="<?php echo"$pagesArray[name]" ?>" /></td>
+        		<?php
+        		echo"</tr>\n";
+        		//Game Data field
+        		echo"<tr>\n";
+        		echo "<th class='setuptablecheck'>Game Data</th>\n";
+        		if ($pagesArray[game]==1)
+        		{
+          			echo "<td><input class='setuptablecheck' name='game' type='checkbox' checked='checked' /></td>\n";
+        		}
+        		else
+        		{
+          			echo "<td><input class='setuptablecheck' name='game' type='checkbox' /></td>\n";
+        		}
+        		echo"</tr>\n";
+        		//News field
+        		echo"<tr>\n";
+        		echo "<th class='setuptablecheck'>Latest News</th>\n";
+        		if ($pagesArray[news]==1)
+        		{
+          			echo "<td><input class='setuptablecheck' name='news' type='checkbox' checked='checked' /></td>\n";
+        		}
+        		else
+        		{
+          			echo "<td><input class='setuptablecheck' name='news' type='checkbox' /></td>\n";
+        		}
+        		echo"</tr>\n";
+				//Units field
+        		echo"<tr>\n";
+        		echo "<th class='setuptablecheck'>TO&E</th>\n";
+        		if ($pagesArray[units]==1)
+        		{
+          			echo "<td><input class='setuptablecheck' name='units' type='checkbox' checked='checked' /></td>\n";
+        		}
+        		else
+        		{
+          			echo "<td><input class='setuptablecheck' name='units' type='checkbox' /></td>\n";
+        		}
+        		echo"</tr>\n";
+        		//Notables field
+        		echo"<tr>\n";
+        		echo "<th class='setuptablecheck'>Notable Pilots</th>\n";
+        		if ($pagesArray[notables]==1)
+        		{
+          			echo "<td><input class='setuptablecheck' name='notables' type='checkbox' checked='checked' /></td>\n";
+        		}
+        		else
+        		{
+          			echo "<td><input class='setuptablecheck' name='notables' type='checkbox' /></td>\n";
+        		}
+        		echo"</tr>\n";
+        		
+        		$inputFields->textarea('edittableleft', 'edittableright', 1, $pagesArray[name], 'edittablecommon', "text", $pagesArray[text]);
+        		
+				echo"<tr>\n";
+        		echo "<td colspan='2'>\n";
+        		echo "<input type='hidden' name='ID' value='{$pagesArray[id]}' />\n";
+        		echo "<input type='hidden' name='prefpos' value='{$pagesArray[prefpos]}' /> \n";
+        		echo "<input type='hidden' name='QueryType' value='pages' /> \n";
+        		echo "<input type='hidden' name='QueryAction' value='AddChange' /> \n";
+        		echo "<input class='setuptablebutton' name='QueryAction' type='submit' value='Change' /> \n";
+          		echo "<input class='setuptablebutton' name='QueryAction' type='submit' value='Delete' onclick='return confirmSubmit(\"Delete\")' />\n";
+        		echo "</td>\n";
+        		echo "</tr>\n";
+				
+        		echo "</table>\n";
+        		echo "</form>\n";
+
+        		//Up & Down buttons
+        		echo "<hr />\n";
+        		echo "<b>Site Position</b><br />\n";
+        		echo "<form action='index.php?action=setupquery' method='post'>\n";
+        		echo "<table border='0'>\n";
+        		echo "<tr>\n";
+        		echo "<td>\n";
+        		echo "<input type='hidden' name='ID' value='{$pagesArray[id]}' />\n";
+        		echo "<input type='hidden' name='prefpos' value='{$pagesArray[prefpos]}' />\n";
+        		echo "<input type='hidden' name='QueryType' value='pagesmove' />\n";
+        		echo "<input type='hidden' name='QueryAction' value='up' />\n";
+        		if ($pagesArray[prefpos]!=1)
+        		{
+          			echo "<input class='toebutton' name='QueryAction' type='submit' value='Up' />\n";
+        		}
+        		else
+        		{
+          			echo "<input class='toebutton' name='QueryAction' type='submit' value='Up' disabled='disabled' />\n";
+        		}
+        		if ($pagesArray[prefpos]!=$pagesN)
+        		{
+          			echo "<input class='toebutton' name='QueryAction' type='submit' value='Down' />\n";
+        		}
+        		else
+        		{
+          			echo "<input class='toebutton' type='submit' value='Down' disabled='disabled' />\n";
+        		}
+        		echo "</td>\n";
+        		echo "</tr>\n";
+        		echo "</table>\n";
+        		echo "</form>\n";
+
+        		echo"</div>\n";
+      		}
+      		else
+      		{
+		        echo"<div id='typeeditarea' class='typeeditarea'>\n";
+		        echo"<form action='index.php?action=setupquery' method='post'>\n";
+		        echo"<table border='0'>\n";
+		        //Name
+		        echo"<tr>\n";
+		        echo "<th class='setuptabletext'>Name</th>\n";
+		        echo "<td><input class='setuptabletext' name='name' type='text' maxlength='100' value='' /></td>\n";
+		        echo"</tr>\n";
+		        //Game Data field
+		        echo"<tr>\n";
+		        echo "<th class='setuptablecheck'>Game Data</th>\n";
+		        echo "<td><input class='setuptablecheck' name='game' type='checkbox' /></td>\n";
+		        echo"</tr>\n";
+		        //News Field
+		        echo"<tr>\n";
+		        echo "<th class='setuptablecheck'>Latest News</th>\n";
+		        echo "<td><input class='setuptablecheck' name='news' type='checkbox' /></td>\n";
+		        echo"</tr>\n";
+		        //Units Field
+		        echo"<tr>\n";
+		        echo "<th class='setuptablecheck'>TO&E</th>\n";
+		        echo "<td><input class='toessetuptablecheckhort' name='units' type='checkbox' /></td>\n";
+		        echo"</tr>\n";
+		        //Notables Field
+		        echo"<tr>\n";
+		        echo "<th class='setuptablecheck'>Notable Pilots</th>\n";
+		        echo "<td><input class='setuptablecheck' name='notables' type='checkbox' /></td>\n";
+		        echo"</tr>\n";
+		        
+		        $inputFields->textarea('edittableleft', 'edittableright', 1, 'Text', 'edittablecommon', 'text', '');
+		
+		        echo"<tr>\n";
+		        echo "<td>\n";
+		        echo "<input type='hidden' name='ID' value='0' />\n";
+		        echo "<input type='hidden' name='QueryType' value='pages' />\n";
+		        echo "<input class='setuptablebutton' name='QueryAction' type='submit' value='Add' />\n";
+		        echo "</td>\n";
+		        echo "</tr>\n";
+		
+		        echo "</table>\n";
+		        echo "</form>\n";
+		
+		        echo "</div>\n";
+      		}
+      		echo "</div>\n";
+      		break;			
 
 			//Command Information
 		default:
