@@ -6,6 +6,7 @@ Version 0.7.8
 + Made header backgound image dynamic (cammand table need's this: ALTER TABLE `command` ADD COLUMN `header` VARCHAR(100)  DEFAULT 'link' AFTER `image`;)
 + added database changes to update_roster.sql
 + backend administration of user defined front pages
++ user-defined pages show up on front (still need to define a "home" page for feeds)
 
 Version 0.7.7
 --------------------------

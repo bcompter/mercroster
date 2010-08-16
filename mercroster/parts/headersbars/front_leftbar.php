@@ -18,6 +18,15 @@ else
   $readpermission=6;
 }
 
+$pageID = $_GET['page'];
+$pageID = stripslashes($pageID);
+$pageID = mysql_real_escape_string($pageID);
+
+$pagesResult=$dbf->queryselect("SELECT id, name FROM pages ORDER BY prefpos ASC;");
+
+$pageResult=$dbf->queryselect("SELECT * FROM pages WHERE id='{$pageID}';");
+$pageArray=mysql_fetch_array($pageResult, MYSQL_ASSOC);
+
 $contractResult=$dbf->queryselect("SELECT employer, target, start, end FROM contracts WHERE start<='{$currentDate}' AND end>='{$currentDate}' ORDER BY start ASC;");
 $logResult=$dbf->queryselect("SELECT r.id, r.logtype, r.topic, l.type, r.start FROM logentry r LEFT JOIN logtypes l ON r.logtype=l.id WHERE l.readpermission>={$readpermission} ORDER BY r.start DESC, r.opdate DESC, r.id ASC LIMIT 0, 15;");
 
@@ -59,45 +68,49 @@ echo "</div>\n";
 echo "<div class='sidetablebody'>\n";
 
 echo "<ul>\n";
-echo "<li class='oldtopic'><a class='newstable' href='index.php?action=information'>About {$commandAbb}</a></li>\n";
-echo "<li class='oldtopic'><a class='newstable' href='index.php?action=services'>Services</a></li>\n";
-echo "<li class='oldtopic'><a class='newstable' href='index.php?action=contact'>Hire us</a></li>\n";
-echo "</ul>\n";
-
-echo "</div>\n";
-
-echo "<div class='sidetableheader'>\n";
-echo "Game data\n";
-echo "</div>\n";
-echo "<div class='sidetablebody'>\n";
-echo "<b>Date:</b><br />\n";
-echo "{$currentGameDate}<br />\n";
-echo "<b>Located on:</b><br />\n";
-echo "{$currentLocation}<br />\n";
-echo "<b>Employed by:</b><br />\n";
-echo "{$currentEmployer}<br />\n";
-echo "</div>\n";
-
-echo "<div class='sidetableheader'>\n";
-echo "Latest News\n";
-echo "</div>\n";
-echo "<div class='sidetablebody'>\n";
-echo "<ul>\n";
-while($array = mysql_fetch_array($logResult, MYSQL_ASSOC))
-{
-  if((isset($_SESSION['SESS_ID']) || (trim($_SESSION['SESS_ID'])!='')) && array_search($array[id], $logidArray)==false)
-  {
-    echo "<li class='newtopic'><small>{$array[type]}:</small><br />\n";
-    echo "<a class='newstable' href='index.php?action=news&amp;log=$array[id]&amp;first=0'>$array[topic]</a></li>\n";
-  }
-  else
-  {
-    echo "<li class='oldtopic'><small>{$array[type]}:</small><br />\n";
-    echo "<a class='newstable' href='index.php?action=news&amp;log=$array[id]&amp;first=0'>$array[topic]</a></li>\n";
-  }
+while($array=mysql_fetch_array($pagesResult, MYSQL_ASSOC)) {
+	echo "<li class='oldtopic'><a class='newstable' href='index.php?action=pages&page={$array[id]}'>{$array[name]}</a></li>\n";
 }
 echo "</ul>\n";
+
 echo "</div>\n";
+
+if($action!="pages" || $pageArray[game]==1) {
+	echo "<div class='sidetableheader'>\n";
+	echo "Game data\n";
+	echo "</div>\n";
+	echo "<div class='sidetablebody'>\n";
+	echo "<b>Date:</b><br />\n";
+	echo "{$currentGameDate}<br />\n";
+	echo "<b>Located on:</b><br />\n";
+	echo "{$currentLocation}<br />\n";
+	echo "<b>Employed by:</b><br />\n";
+	echo "{$currentEmployer}<br />\n";
+	echo "</div>\n";
+}
+
+if($action!="pages" || $pageArray[news]==1) {
+	echo "<div class='sidetableheader'>\n";
+	echo "Latest News\n";
+	echo "</div>\n";
+	echo "<div class='sidetablebody'>\n";
+	echo "<ul>\n";
+	while($array = mysql_fetch_array($logResult, MYSQL_ASSOC))
+	{
+	  if((isset($_SESSION['SESS_ID']) || (trim($_SESSION['SESS_ID'])!='')) && array_search($array[id], $logidArray)==false)
+	  {
+	    echo "<li class='newtopic'><small>{$array[type]}:</small><br />\n";
+	    echo "<a class='newstable' href='index.php?action=news&amp;log=$array[id]&amp;first=0'>$array[topic]</a></li>\n";
+	  }
+	  else
+	  {
+	    echo "<li class='oldtopic'><small>{$array[type]}:</small><br />\n";
+	    echo "<a class='newstable' href='index.php?action=news&amp;log=$array[id]&amp;first=0'>$array[topic]</a></li>\n";
+	  }
+	}
+	echo "</ul>\n";
+	echo "</div>\n";
+}
 
 if(isset($_SESSION['SESS_ID']) || (trim($_SESSION['SESS_ID'])!=''))
 {

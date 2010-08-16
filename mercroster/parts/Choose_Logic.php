@@ -17,6 +17,15 @@ define('Ghe36Jacb3b', TRUE);
 define('kgE3c68Fg2bnM', TRUE);
 switch ($action)
 {
+  case "pages":
+  	$title="Main";
+    $headerbar="front";
+    require("parts/headersbars/header.php");
+    require("parts/headersbars/front_leftbar.php");
+    require("parts/headersbars/front_rightbar.php");
+    define('Gyu53Hkl3', TRUE);
+    require("parts/front/Front.php");
+    break;
   case "main":
     $title="Main";
     $headerbar="front";
