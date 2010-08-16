@@ -1177,7 +1177,7 @@ CREATE TABLE  `mercroster`.`pages` (
 --
 /*!40000 ALTER TABLE `pages` DISABLE KEYS */;
 LOCK TABLES `pages` WRITE;
-INSERT INTO `mercroster`.`pages` (id, name, game, news, units, notables, text, prefpos) VALUES(1, 'Main', 1, 1, 1, 1, 1, "It Works!", 1);
+INSERT INTO `mercroster`.`pages` (id, name, game, news, units, notables, text, prefpos) VALUES(1, 'About Us', 1, 1, 1, 1, 'It Works!', 1);
 UNLOCK TABLES;
 /*!40000 ALTER TABLE `pages` ENABLE KEYS */;
 

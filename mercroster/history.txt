@@ -13,6 +13,8 @@ Version 0.7.8
 + Bug: after saving equipment information user is directed to edit equipment view rather than equipment view 
 + Bug: logged in users can't access front
 + logo and motto on left side bar
++ Bug: typo "Font Navigation"
++ Bug: error in database setup
 
 Version 0.7.7
 --------------------------

@@ -74,7 +74,7 @@ echo "<br><i>{$headerArray[motto]}</i>\n";
 echo "</div>\n";
 
 echo "<div class='sidetableheader'>\n";
-echo "Font Navigation\n";
+echo "Front Navigation\n";
 echo "</div>\n";
 echo "<div class='sidetablebody'>\n";
 
