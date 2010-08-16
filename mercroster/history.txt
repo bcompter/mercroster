@@ -7,6 +7,7 @@ Version 0.7.8
 + added database changes to update_roster.sql
 + backend administration of user defined front pages
 + user-defined pages show up on front (still need to define a "home" page for feeds)
++ notable, tro, news, and unit div should move flush to the right of the container
 
 Version 0.7.7
 --------------------------

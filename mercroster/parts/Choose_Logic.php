@@ -26,48 +26,11 @@ switch ($action)
     define('Gyu53Hkl3', TRUE);
     require("parts/front/Front.php");
     break;
-  case "main":
-    $title="Main";
-    $headerbar="front";
-    require("parts/headersbars/header.php");
-    require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
-    define('Gyu53Hkl3', TRUE);
-    require("parts/front/Front.php");
-    break;
-  case "information":
-    $title="About Us";
-    $headerbar="front";
-    require("parts/headersbars/header.php");
-    require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
-    define('Gyu53Hkl3', TRUE);
-    require("parts/front/Front.php");
-    break;
-  case "services":
-    $title="About Us";
-    $headerbar="front";
-    require("parts/headersbars/header.php");
-    require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
-    define('Gyu53Hkl3', TRUE);
-    require("parts/front/Front.php");
-    break;
-  case "contact":
-    $title="About Us";
-    $headerbar="front";
-    require("parts/headersbars/header.php");
-    require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
-    define('Gyu53Hkl3', TRUE);
-    require("parts/front/Front.php");
-    break;
   case "news":
     $title="News";
     $headerbar="front";
     require("parts/headersbars/header.php");
     require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
     define('gt5fhsb64', TRUE);
     require("parts/log/News.php");
     break;
@@ -76,7 +39,6 @@ switch ($action)
     $headerbar="front";
     require("parts/headersbars/header.php");
     require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
     define('F3xVH894Vdsv', TRUE);
     require("parts/personnel/Personnel.php");
     break;
@@ -85,7 +47,6 @@ switch ($action)
     $headerbar="front";
     require("parts/headersbars/header.php");
     require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
     define('g6afyHgJhHu87F', TRUE);
     require("parts/equipment/Equipment.php");
     break;
@@ -94,7 +55,6 @@ switch ($action)
     $headerbar="front";
     require("parts/headersbars/header.php");
     require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
     define('j6Fr4F7k0cs8', TRUE);
     require("parts/unit/Unit.php");
     break;
