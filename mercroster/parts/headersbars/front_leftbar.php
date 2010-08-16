@@ -68,6 +68,7 @@ echo "</div>\n";
 echo "<div class='sidetablebody'>\n";
 
 echo "<ul>\n";
+echo "<li class='oldtopic'><a class='newstable' href='index.php?action=main'>Home</a></li>\n";
 while($array=mysql_fetch_array($pagesResult, MYSQL_ASSOC)) {
 	echo "<li class='oldtopic'><a class='newstable' href='index.php?action=pages&page={$array[id]}'>{$array[name]}</a></li>\n";
 }

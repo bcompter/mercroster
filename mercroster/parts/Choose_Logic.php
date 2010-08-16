@@ -490,7 +490,6 @@ switch ($action)
       $headerbar="front";
       require("parts/headersbars/header.php");
       require("parts/headersbars/front_leftbar.php");
-      require("parts/headersbars/front_rightbar.php");
       define('Gyu53Hkl3', TRUE);
       require("parts/front/Front.php");
     }
