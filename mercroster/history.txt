@@ -18,6 +18,7 @@ Version 0.7.8
 + cleaning up blog entries
 + added contentnarrow tag to front.css for personnel (so notables can go on the right bar)
 + added notables right bar to front display of personnel
++ Bug: image upload pages link incorrectly to command tab
 
 Version 0.7.7
 --------------------------
