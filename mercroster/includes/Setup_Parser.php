@@ -893,36 +893,7 @@ class Setupparser  extends Parser
             {
               $parseheader="location:index.php?action=command&page=1&err={$errMSG}";
             }
-            break;
-          }
-          if($_POST['sub']=="main")
-          {
-            $main=$this->strip($_POST['main']);
-            $queryArray[sizeof($queryArray)]="UPDATE command SET main='{$main}' WHERE id=1;";
-            $dbf->queryarray($queryArray);
-            $parseheader="location:index.php?action=command&page=2";
-          }
-          if($_POST['sub']=="desc")
-          {
-            $desc=$this->strip($_POST['desc']);
-            $queryArray[sizeof($queryArray)]="UPDATE command SET description='{$desc}' WHERE id=1;";
-            $dbf->queryarray($queryArray);
-            $parseheader="location:index.php?action=command&page=3";
-          }
-          if($_POST['sub']=="serv")
-          {
-            $services=$this->strip($_POST['services']);
-            $queryArray[sizeof($queryArray)]="UPDATE command SET services='{$services}' WHERE id=1;";
-            $dbf->queryarray($queryArray);
-            $parseheader="location:index.php?action=command&page=4";
-          }
-          if($_POST['sub']=="cont")
-          {
-            $contact=$this->strip($_POST['contact']);
-            $queryArray[sizeof($queryArray)]="UPDATE command SET contact='{$contact}' WHERE id=1;";
-            $dbf->queryarray($queryArray);
-            $parseheader="location:index.php?action=command&page=5";
-          }
+          }         
           break;
 
         case "personneltypemove":
