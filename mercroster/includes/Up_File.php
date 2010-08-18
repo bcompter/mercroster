@@ -76,11 +76,11 @@ class Upfile
     }
     if($errmsg!="")
     {
-      return("location:index.php?action=command&page=7&sub={$sub}&mgs={$errmsg}");
+      return("location:index.php?action=command&page=4&sub={$sub}&mgs={$errmsg}");
     }
     else
     {
-      return("location:index.php?action=command&page=7&sub={$sub}");
+      return("location:index.php?action=command&page=4&sub={$sub}");
     }
   }
 

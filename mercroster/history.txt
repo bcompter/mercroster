@@ -1,6 +1,6 @@
 Version 0.7.9
 --------------------------
-
++ Bug: sent to the wrong tab after uploading images
 
 Version 0.7.8
 --------------------------
