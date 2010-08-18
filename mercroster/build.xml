@@ -12,7 +12,7 @@
 	<property name="sheetdir" value="controlsheets" />
 	<property name="svndir" value="svndev" />
 	<property name="project.name" value="mercroster" />
-	<property name="version" value="0.7.8" />
+	<property name="version" value="0.7.9" />
 
 	<!-- svnroot used for svn authentification -->
 	<property name="svnroot" value="https://mercroster.svn.sourceforge.net/svnroot/mercroster/" />

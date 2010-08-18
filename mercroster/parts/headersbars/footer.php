@@ -18,7 +18,7 @@ echo"<td style='width: 40%'>\n";
 <?php
 echo"</td>\n";
 echo"<td style='width: 20%'>\n";
-echo"BattleTech Mercenary Roster Version 0.7.8\n";
+echo"BattleTech Mercenary Roster Version 0.7.9\n";
 echo"<br />\n";
 echo"&copy; 2009-2010 Juho Savela\n";
 echo"<br />\n";
