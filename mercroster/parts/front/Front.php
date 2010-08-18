@@ -12,7 +12,7 @@ $pageID = $_GET['page'];
 $pageID = stripslashes($pageID);
 $pageID = mysql_real_escape_string($pageID);
 
-$headerResult=$dbf->queryselect("SELECT name, motto, description, image, services, contact, main FROM command WHERE id='1';");
+$headerResult=$dbf->queryselect("SELECT name, motto, image FROM command WHERE id='1';");
 $headerArray=mysql_fetch_array($headerResult, MYSQL_ASSOC);
 
 

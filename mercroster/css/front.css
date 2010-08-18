@@ -334,6 +334,11 @@ img.headertopic {
 	margin-top: 5px;
 }
 
+img.unitlogo {
+	float: left;
+	max-width: 150px;
+}
+
 h2.headercenter {
 	color: black;
 	text-align: center;

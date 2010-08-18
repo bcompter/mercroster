@@ -30,7 +30,7 @@ else
 	$datesArray = mysql_fetch_array($datesResult, MYSQL_NUM);
 
 	//Fetching Command data
-	$commandResult = $dbf->queryselect("SELECT name, abbreviation, motto, description, image, header, icon, services, contact, main FROM command WHERE id=1;");
+	$commandResult = $dbf->queryselect("SELECT name, abbreviation, motto, image, header, icon FROM command WHERE id=1;");
 	$commandArray = mysql_fetch_array($commandResult, MYSQL_ASSOC);
 
 	$sdate=$datesArray[1];
@@ -154,8 +154,8 @@ else
 					echo "<li><a class='notselectedtype' href='index.php?action=command&amp;page=4&amp;sub=7'>Unit type icons</a></li>\n";
 					$path="./images/commandimages/";
 					$opath="./images/commandimages/";
-					$width=0;
-					$height=0;
+					$width=150;
+					$height=150;
 					break;
 				case "5":
 					echo "<li><a class='notselectedtype' href='index.php?action=command&amp;page=4&amp;sub=1'>Unit images</a></li>\n";

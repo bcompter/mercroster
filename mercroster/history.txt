@@ -21,6 +21,8 @@ Version 0.7.8
 + Bug: image upload pages link incorrectly to command tab
 + changed topic.png in commandheaders to commandheader.png
 + removed unnecessary database calls from Setup_Parser.php
++ updated mercenary_roster.sql
++ removed all references to static pages in command table
 
 Version 0.7.7
 --------------------------

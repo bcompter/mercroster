@@ -30,7 +30,7 @@ $pageArray=mysql_fetch_array($pageResult, MYSQL_ASSOC);
 $contractResult=$dbf->queryselect("SELECT employer, target, start, end FROM contracts WHERE start<='{$currentDate}' AND end>='{$currentDate}' ORDER BY start ASC;");
 $logResult=$dbf->queryselect("SELECT r.id, r.logtype, r.topic, l.type, r.start FROM logentry r LEFT JOIN logtypes l ON r.logtype=l.id WHERE l.readpermission>={$readpermission} ORDER BY r.start DESC, r.opdate DESC, r.id ASC LIMIT 0, 15;");
 
-$headerResult=$dbf->queryselect("SELECT name, motto, description, image, services, contact, main FROM command WHERE id='1';");
+$headerResult=$dbf->queryselect("SELECT name, motto, image FROM command WHERE id='1';");
 $headerArray=mysql_fetch_array($headerResult, MYSQL_ASSOC);
 
 $currentLocation="";
@@ -69,7 +69,7 @@ echo "<div class='sidetableheader'>\n";
 echo "{$headerArray[name]}\n";
 echo "</div>\n";
 echo "<div class='sidetablebody'>\n";
-echo "<img class='imagecenter' src=images/commandimages/{$headerArray[image]}>\n";
+echo "<img class='unitlogo' src=images/commandimages/{$headerArray[image]}>\n";
 echo "<br><i>{$headerArray[motto]}</i>\n";
 echo "</div>\n";
 

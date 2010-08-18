@@ -15,7 +15,7 @@ class Feed_Generator
     $bbf=new BBFunctions;
     require("htdocs/appsetup.php");
 
-    $headerResult = $this->dbf->queryselect("SELECT name, motto, description, image, services, contact, main FROM command WHERE id='1';");
+    $headerResult = $this->dbf->queryselect("SELECT name, motto, image FROM command WHERE id='1';");
     $logResult = $this->dbf->queryselect("SELECT r.id, r.logtype, r.topic, l.type, r.start, r.text FROM logentry r LEFT JOIN logtypes l ON r.logtype=l.id ORDER BY r.start DESC, r.opdate DESC, r.id ASC LIMIT 0, 10;");
 
     while($array=mysql_fetch_array($headerResult, MYSQL_ASSOC))
