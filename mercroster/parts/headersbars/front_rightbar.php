@@ -6,6 +6,8 @@ if(!defined('kgE3c68Fg2bnM'))
   exit;
 }
 
+require("htdocs/dbsetup.php");
+
 $pageID = $_GET['page'];
 $pageID = stripslashes($pageID);
 $pageID = mysql_real_escape_string($pageID);

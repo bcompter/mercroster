@@ -26,6 +26,7 @@ Version 0.7.8
 + resized commandimage.png to 150x150
 + updated update_roster.sql
 + remove abilities from table when personnel deleted
++ Bug: mysql_real_escape_string requires dbsetup.php (go figure)
 
 Version 0.7.7
 --------------------------
