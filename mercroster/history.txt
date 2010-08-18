@@ -16,6 +16,8 @@ Version 0.7.8
 + Bug: typo "Font Navigation"
 + Bug: error in database setup
 + cleaning up blog entries
++ added contentnarrow tag to front.css for personnel (so notables can go on the right bar)
++ added notables right bar to front display of personnel
 
 Version 0.7.7
 --------------------------

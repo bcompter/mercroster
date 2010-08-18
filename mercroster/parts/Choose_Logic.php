@@ -39,6 +39,7 @@ switch ($action)
     $headerbar="front";
     require("parts/headersbars/header.php");
     require("parts/headersbars/front_leftbar.php");
+    require("parts/headersbars/front_rightbar.php");
     define('F3xVH894Vdsv', TRUE);
     require("parts/personnel/Personnel.php");
     break;
@@ -63,7 +64,6 @@ switch ($action)
     $headerbar="front";
     require("parts/headersbars/header.php");
     require("parts/headersbars/front_leftbar.php");
-    require("parts/headersbars/front_rightbar.php");
     define('gh5sxcBdu4', TRUE);
     require("parts/login/Login.php");
     break;

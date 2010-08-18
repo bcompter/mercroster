@@ -123,6 +123,12 @@ div.links {
 	margin-bottom: 5px;
 }
 
+#contentnarrow {
+	margin-left: 180px;
+	margin-right: 180px;
+	padding: 20px 10px 10px 10px;
+}
+
 #content {
 	margin-left: 180px;
 	margin-right: 0px;

@@ -68,7 +68,12 @@ if(mysql_num_rows($personnelResult)==1)
   }
   mysql_free_result($killsRetVal);
 
-  echo "<div id='content'>\n";
+  if($action!="notable") 
+  {
+  	echo "<div id='content'>\n";
+  } else {
+  	echo "<div id='contentnarrow'>\n";
+  }
   echo "<div class='genericheader'>\n";
   echo "<b>Personnel Information</b>\n";
   if($action!="units" && $action!="notable" && isset($_SESSION['SESS_ID']) && $_SESSION['SESS_TYPE']<='4')

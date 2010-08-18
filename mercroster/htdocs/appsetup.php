@@ -1,4 +1,4 @@
 <?php
 $loggin=true;
-$sitepath="INSERT_URL"
+$sitepath="http://localhost/mercroster"
 ?>

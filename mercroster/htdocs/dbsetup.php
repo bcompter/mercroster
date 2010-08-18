@@ -1,12 +1,12 @@
 <?
 $dbhost = 'localhost:3306';
-$dbuser = 'INSERT_HOST';
-$dbpass = 'INSERT_PASSWORD';
+$dbuser = 'root';
+$dbpass = '';
 
 $conn = mysql_connect($dbhost, $dbuser, $dbpass);
 if(! $conn )
 {
   die('Could not connect: ' . mysql_error());
 }
-mysql_select_db( 'mercroster' );
+mysql_select_db( 'flaming_devil_monkeys' );
 ?>
