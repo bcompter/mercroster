@@ -23,6 +23,7 @@ Version 0.7.8
 + removed unnecessary database calls from Setup_Parser.php
 + updated mercenary_roster.sql
 + removed all references to static pages in command table
++ resized commandimage.png to 150x150
 
 Version 0.7.7
 --------------------------
