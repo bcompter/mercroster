@@ -34,6 +34,7 @@ class Personnelparser extends Parser
                 $queryArray[sizeof($queryArray)] = "DELETE FROM crew WHERE id='{$id}';"; //delete person
                 $queryArray[sizeof($queryArray)] = "DELETE FROM personnelpositions WHERE person='{$id}';"; //delete person's positions
                 $queryArray[sizeof($queryArray)] = "DELETE FROM skills WHERE person='{$id}';"; //delete person's skills
+                $queryArray[sizeof($queryArray)] = "DELETE FROM abilities WHERE person='{$id}';"; //delete person's special abilities
                 $dbf->queryarray($queryArray);
                 $parseheader="location:index.php?action=personneltable&type={$type}&order=1&first=0";
               }

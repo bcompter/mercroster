@@ -24,6 +24,8 @@ Version 0.7.8
 + updated mercenary_roster.sql
 + removed all references to static pages in command table
 + resized commandimage.png to 150x150
++ updated update_roster.sql
++ remove abilities from table when personnel deleted
 
 Version 0.7.7
 --------------------------

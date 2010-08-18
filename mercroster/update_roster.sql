@@ -22,3 +22,8 @@ UPDATE pages, command SET pages.text = command.main WHERE pages.id=1 AND command
 UPDATE pages, command SET pages.text = command.description WHERE pages.id=2 AND command.id=1;
 UPDATE pages, command SET pages.text = command.services WHERE pages.id=3 AND command.id=1;
 UPDATE pages, command SET pages.text = command.contact WHERE pages.id=4 AND command.id=1;
+
+ALTER TABLE `command` drop `description`;
+ALTER TABLE `command` drop `services`;
+ALTER TABLE `command` drop `main`;
+ALTER TABLE `command` drop `contact`;
