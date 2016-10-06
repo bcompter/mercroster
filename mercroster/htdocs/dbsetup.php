@@ -1,4 +1,4 @@
-<?
+<?php
 $dbhost = 'localhost:3306';
 $dbuser = 'INSERT_USER';
 $dbpass = 'INSERT_PASSWORD';
